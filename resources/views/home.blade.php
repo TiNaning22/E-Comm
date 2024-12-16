@@ -35,7 +35,7 @@
             <div class="card-body">
               <h5 class="card-title">Alat dan Aksesoris </h5>
               <p class="card-text">Jelajahi katalog alat dan asksesoris kami sekarang untuk solusi energi yang bersih dan praktis!</p>
-              <a href="/keranjang" class="btn-ktlg btn-primary"><i class="bi bi-cart me-3"></i>Tambahkan Keranjang</a>
+              <a href="/keranjang" class="btn-ktlg btn-primary"><i class="bi bi-cart me-3"></i>Lihat Produk</a>
             </div>
           </div>
       </div>
@@ -45,7 +45,7 @@
             <div class="card-body">
               <h5 class="card-title">Bahan Bakar</h5>
               <p class="card-text">Jelajahi produk bahan bakar kami sekarang untuk solusi energi yang bersih dan praktis!</p>
-              <a href="/keranjang" class="btn-ktlg btn-primary"><i class="bi bi-cart me-3"></i>Tambahkan Keranjang</a>
+              <a href="/keranjang" class="btn-ktlg btn-primary"><i class="bi bi-cart me-3"></i>Lihat Produk</a>
             </div>
           </div>
       </div>
