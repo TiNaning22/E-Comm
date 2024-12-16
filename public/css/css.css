@@ -1,0 +1,164 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.nav-bar{
+    background-color: #1E201E;
+    color: #FCF8F3;
+    text-decoration: none;
+}
+
+.nav-link{
+    margin-left: 2rem;
+    display: inline-flex;
+    align-content: center;
+    position: relative;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.nav-link::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    transition: width 0.5s ease, bottom 0.5s ease;
+    pointer-events: none;
+}
+
+.nav-link:hover::after{
+    width: 100%;
+    bottom: -5px;
+}
+
+.hero{
+    background: url('top-view-skewers-meat-fire.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    position: relative;
+    color: white;
+}
+
+.cont-hero{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay menutupi seluruh hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+   text-align: center;
+}
+
+.btn{
+    background-color: transparent;
+    border: solid 2px rgb(255, 255, 255);
+    color:white;
+    transition: 0.6s;
+    
+}
+
+.btn:hover{
+    background-color: #1E201E;
+    border: none;
+    transform: scale(0.80);
+}
+
+.btn-ktlg{
+    background-color: #1E201E;
+    border: solid 2px rgb(255, 255, 255);
+    color:white;
+    align-items: start;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 9px;
+    transition: 0.6s;
+}
+
+.card{
+    cursor: pointer;
+    transition: 0.6s;
+}
+
+.card:hover{
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+    height: 100vh; /* Mengatur tinggi container menjadi 100% dari viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.form {
+    width: 100%;
+    background-color: #1E201E;
+    padding: 6rem;
+    border-radius: 10px;
+    color: white;
+  }
+
+.footer-content{
+    background-color: #1E201E;
+    display: flex;
+    margin-top: auto;
+    align-items: center;
+    height: 20vh;
+    border-radius: 15px 15px 0 0;
+}
+
+.list{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sosmed{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.logo{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    margin-left: 50px;
+}
+
+.bi{
+ font-size: 25px;
+ margin-bottom: 5px;
+}
+
+.nama-kelompok{
+    color: white;
+    display: flex;
+    position: relative;
+    left: 30%;
+}
+
+.list-kelompok{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+
+
