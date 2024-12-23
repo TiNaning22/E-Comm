@@ -7,6 +7,15 @@ html, body {
 }
 
 
+html {
+    scroll-behavior: smooth;
+}
+
+#tentang, #katalog, #kontak {
+    scroll-margin-top: 70px; /* Sesuaikan dengan tinggi navbar */
+}
+
+
 .nav-bar{
     background-color: #1E201E;
     color: #FCF8F3;
@@ -160,5 +169,79 @@ html, body {
     list-style: none;
 }
 
+/* tentang kami start */
+#tentang {
+    background-image: url('/E-Comm/public/img/rb_50618.png'); /* Ubah ke path gambar Anda */
+    background-size: cover; /* Latar belakang memenuhi seluruh layar */
+    background-position: center; /* Posisikan gambar di tengah */
+    background-repeat: no-repeat; /* Hindari pengulangan gambar */
+    height: 100vh; /* Layar penuh secara vertikal */
+    display: flex; /* Gunakan flex untuk pusatkan konten */
+    flex-direction: column; /* Susun elemen secara vertikal */
+    justify-content: center; /* Pusatkan secara vertikal */
+    align-items: center; /* Pusatkan secara horizontal */
+    color: black; /* Ubah warna teks agar kontras */
+    padding: 20px; /* Tambahkan padding jika diperlukan */
+}
 
+/* tentang kami end */
+
+/* katalog start */
+.text-center-wrapper {
+    text-align: center; /* Memusatkan teks secara horizontal */
+    margin-top: 50px; /* Opsional: tambahkan jarak atas/bawah */
+    margin-bottom: 50px;
+  }
+  
+  h1 {
+    margin: 0 auto; /* Tambahkan untuk memastikan teks benar-benar di tengah */
+    margin-bottom: 50px;
+  }
+
+.card-group .row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 5px;
+    white-space: nowrap;
+    scroll-behavior: smooth; /* Agar scroll terasa halus */
+    -webkit-overflow-scrolling: touch; /* Dukungan untuk perangkat sentuh */
+  }
+  
+  .card-group .col {
+    /*flex: 0 0 auto;  Membuat kolom tidak menyusut */
+    margin-right: 0px; /* Memberi jarak antar kartu */
+  }
+  
+  .card {
+    width: 18rem; /* Tetapkan lebar card */
+    display: flex;
+    flex-direction: column; /* Membuat konten card tersusun secara vertikal */
+    overflow: hidden; /* Mencegah konten melampaui card */
+    text-align: left; /* Opsional: Sesuaikan jika Anda ingin teks rata kiri */
+  }
+  
+  .card-body {
+    flex: 1; /* Memungkinkan isi body memenuhi card */
+    display: flex;
+    flex-direction: column; /* Susun konten card-body secara vertikal */
+  }
+  
+  .card-text {
+    white-space: normal; /* Pastikan teks dibungkus */
+    overflow: hidden; /* Mencegah teks keluar dari card */
+    text-overflow: ellipsis; /* Tambahkan jika Anda ingin teks panjang dipotong */
+  }
+  
+  .card-img-top {
+    width: 100%; /* Sesuaikan dengan lebar elemen induk */
+    height: 200px; /* Tetapkan tinggi yang sama untuk semua gambar */
+    object-fit: cover; /* Memotong gambar agar sesuai dengan dimensinya */
+    }
+
+
+  /* .btn-ktlg {
+    margin-top: auto; /* Dorong tombol ke bagian bawah card */
+
+/* katalog end */
 
