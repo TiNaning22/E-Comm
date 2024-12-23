@@ -18,7 +18,7 @@
   </div>
   <section id="katalog"></section>
 
-  <div class="card-group">
+  <div  class="card-group">
     
     <h1 class="text-center">Katalog</h1>
     <div class="row justify-content-start">
@@ -28,7 +28,7 @@
           <div class="card-body">
             <h5 class="card-title">Produk Utama Briket</h5>
             <p class="card-text">Jelajahi katalog Produk utama briket kami sekarang untuk solusi energi yang bersih dan praktis!</p>
-            <a href="/keranjang.html" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
+            <a href="/" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@
       <!-- Tambahkan elemen .col seperti contoh di atas untuk kartu lainnya -->
       <div class="col">
         <div class="card">
-          <img src={{ asset('img/') }} class="card-img-top" alt="...">
+          <img src={{ asset('img/display-dark-charcoal-different-forms-shapes.jpg') }} class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Produk Utama Briket</h5>
             <p class="card-text">Jelajahi katalog Produk utama briket kami sekarang untuk solusi energi yang bersih dan praktis!</p>

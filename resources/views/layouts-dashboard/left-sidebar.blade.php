@@ -8,7 +8,7 @@
     </div>
     <div class="info-container">
       <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{-- {{ Auth::user()->name ?? 'Hairul Anam' }}</div> --}}
+        {{ Auth::user()->name ?? 'Admin' }}</div>
       <div class="email"></div>
       <div class="btn-group user-helper-dropdown">
         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"

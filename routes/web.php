@@ -4,17 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/web', function () {
     return view('dasboard.index');
 });
 
-
-Route::get('/home', function () {
-    return view('home.home');
-});
 
 
 Route::get('/katalog', function () {
