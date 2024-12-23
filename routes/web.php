@@ -13,7 +13,7 @@ Route::get('/web', function () {
 
 
 Route::get('/home', function () {
-    return view('home');
+    return view('home.home');
 });
 
 
@@ -21,7 +21,13 @@ Route::get('/katalog', function () {
     return view('katalog');
 });
 
+
 route::resource('/keranjang', CartController::class);
+
+Route::get('/produk', function () {
+    return view('home.produk-utama');
+});
+
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
