@@ -6,6 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/web', function () {
+    return view('dasboard.index');
+});
+
 
 Route::get('/home', function () {
     return view('home');
