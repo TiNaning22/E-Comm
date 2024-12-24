@@ -4,10 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
 
-Route::get('/web', function () {
+Route::get('/dashboard', function () {
     return view('dasboard.index');
 });
 
@@ -17,8 +17,8 @@ Route::get('/home', function () {
 });
 
 
-Route::get('/katalog', function () {
-    return view('katalog');
+Route::get('/cekot', function () {
+    return view('home.checkout');
 });
 
 

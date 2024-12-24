@@ -12,7 +12,7 @@
         <a class="nav-link active" href="#tentang">Tentang Kami</a>
         <a class="nav-link active" href="#katalog">Katalog</a>
         <a class="nav-link active" href="#kontak">Kontak</a>
-        <a class="nav-link active" href="#"><i class="bi bi-cart"></i></a>
+        <a class="nav-link active" href="/keranjang"><i class="bi bi-cart"></i></a>
       </div>
     </div>
   </div>

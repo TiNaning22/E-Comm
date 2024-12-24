@@ -43,7 +43,7 @@
                 @endforeach
             </tbody>
         </table>
-        <a href="#" class="btn btn-success">Proceed to Checkout</a>
+        <a href="/cekot" class="btn btn-success">Checkout Sekarang</a>
     {{-- @else
         <p>Your cart is empty!</p>
     @endif --}}
