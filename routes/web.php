@@ -8,13 +8,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dasboard.index');
+    return view('dasboard.data-produk');
 });
 
-
-Route::get('/home', function () {
-    return view('home.home');
-});
 
 
 Route::get('/cekot', function () {

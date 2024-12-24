@@ -187,6 +187,18 @@ html {
 /* tentang kami end */
 
 /* katalog start */
+.card-group {
+    overflow-x: auto;
+    white-space: nowrap; /* Untuk memastikan elemen tidak melipat ke baris berikutnya */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.card-group::-webkit-scrollbar {
+    display: none;
+}
+
+
 .text-center-wrapper {
     text-align: center; /* Memusatkan teks secara horizontal */
     margin-top: 50px; /* Opsional: tambahkan jarak atas/bawah */

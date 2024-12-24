@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('NamaProduk');
             $table->integer('HargaProduk');
             $table->integer('StokProduk');
-            $table->string('Deskripsiroduk');
+            $table->string('DeskripsiProduk');
+            $table->string('Gambar');
             $table->timestamps();
         });
     }

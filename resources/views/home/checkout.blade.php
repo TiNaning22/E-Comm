@@ -1,7 +1,9 @@
 @extends('layouts.main')
 @section('content')
 <div class="mt-5">
-    <div class="container mt-5">
+    <div class="container m-auto">
+        <br>
+        <br>
         <h2 class="mb-4 text-center">Checkout</h2>
 
         <!-- Row Utama -->
@@ -81,6 +83,10 @@
             <!-- Tombol Checkout -->
             <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Bayar Sekarang</button>
             </form>
+
+            <br>
+            <br>
+            <br>
         </div>
         </div>
     </div>
