@@ -7,14 +7,14 @@ Route::get('/', function () {
     return view('home.home');
 });
 
-Route::get('/web', function () {
+Route::get('/dashboard', function () {
     return view('dasboard.index');
 });
 
 
 
-Route::get('/katalog', function () {
-    return view('katalog');
+Route::get('/cekot', function () {
+    return view('home.checkout');
 });
 
 
