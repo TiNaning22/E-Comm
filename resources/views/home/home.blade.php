@@ -2,20 +2,73 @@
 @section('content')
 <div class="hero">
   <section id="home"></section>
-    <div class="cont-hero">
-        <div class="hero-content">
-            <h1>Selamat Datang di Sini</h1>
-            <p>Temukan Barang Yang Anda Inginkan Disini</p>
-            <a href="#" class="btn btn-lg">Lanjut</a>
-        </div>
+  
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/top-view-skewers-meat-fire.jpg" class="d-block w-100" alt="briket berkualitas tinggi">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Selamat Datang</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+        <a href="#" class="btn btn-lg">Lanjut</a>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="img/still-life-ashes-with-charcoal (1).jpg" class="d-block w-100" alt="beriket Premium andalan kita">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="img/five-coals-hookah-heating-stove.jpg" class="d-block w-100" alt="briket dengan harga ekonomi kualitas premium">
     </div>
   </div>
-
-<div class="container text-center mt-5" id="tentang"> 
-    <h2>Tentang Kami</h2>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
   </div>
+
+
+
+
+<br>
+<br>
+<br>
+  <div id="tentang" style="background: linear-gradient(135deg, #fdfbfb, #ebedee); padding: 60px 20px;">
+    <div class="container" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto;">
+        <!-- Content Section -->
+        <div style="flex: 1; padding: 20px;">
+            <h2 style="font-family: 'Poppins', sans-serif; font-weight: bold; color: #333; font-size: 36px; margin-bottom: 20px;">
+                Tentang Kami
+            </h2>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 18px; line-height: 1.8; color: #555; margin-bottom: 20px;">
+                Selamat datang di <span style="font-weight: bold; color: #ff6600;">briketQu</span>! Kami adalah platform e-commerce yang menyediakan solusi modern untuk kebutuhan briket berkualitas tinggi.
+            </p>
+            <p style="font-family: 'Roboto', sans-serif; font-size: 18px; line-height: 1.8; color: #555;">
+                Fokus kami pada model bisnis <span style="font-weight: bold;">B2B</span> dan <span style="font-weight: bold;">B2C</span> membantu memenuhi kebutuhan pelanggan dari skala rumah tangga hingga industri. Produk kami dirancang untuk efisiensi energi, ramah lingkungan, dan terjangkau.
+            </p>
+        </div>
+
+        <!-- Image Section -->
+        <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+          <img src="img/top-view-skewers-meat-fire.jpg" alt="Briket berkualitas tinggi" style="max-width: 100%; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+  
+
   <section id="katalog"></section>
 
   <div class="card-group">

@@ -21,6 +21,15 @@ Route::get('/cekot', function () {
     return view('home.checkout');
 });
 
+Route::get('/login', function () {
+    return view('auth.login');
+});
+
+Route::get('/registrasi', function () {
+    return view('auth.registrasi');
+});
+
+
 
 route::resource('/keranjang', CartController::class);
 

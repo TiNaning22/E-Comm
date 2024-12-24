@@ -1,30 +1,6 @@
 <!-- Left Sidebar -->
 <aside id="leftsidebar" class="sidebar">
   <!-- User Info -->
-  <div class="user-info">
-    <div class="image">
-      <img src="{{ asset('assets/images/user.png') }}" width="48" height="48"
-        alt="{{ Auth::user()->name ?? 'Hairul Anam' }}" />
-    </div>
-    <div class="info-container">
-      <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{-- {{ Auth::user()->name ?? 'Hairul Anam' }}</div> --}}
-      <div class="email"></div>
-      <div class="btn-group user-helper-dropdown">
-        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="true">keyboard_arrow_down</i>
-        <ul class="dropdown-menu pull-right">
-          <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profil</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="javascript:void(0);"><i class="material-icons">group</i>Menu 1</a></li>
-          <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Menu 2</a></li>
-          <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Menu 3</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="javascript:void(0);"><i class="material-icons">input</i>Keluar</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <!-- #User Info -->
   <!-- Menu -->
   <div class="menu">
@@ -121,18 +97,6 @@
       </li> --}}
     </ul>
   </div>
-  <!-- #Menu -->
-  <!-- Footer -->
-  <div class="legal">
-    <div class="copyright">
-      {{-- &copy; {{ $_since->value < date('Y') ? $_since->value . ' - ' . date('Y') : date('Y') }} <a --}}
-        {{-- href="javascript:void(0);">{{ $_application_name->value }} - --}}
-        {{-- {{ $_company_name->value }}</a>. --}}
-    </div>
-    <div class="version">
-      {{-- <b>{{ __('Version') }}: </b> {{ $_application_version->value }} --}}
-    </div>
-  </div>
-  <!-- #Footer -->
+
 </aside>
 <!-- #END# Left Sidebar -->
