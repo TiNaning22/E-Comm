@@ -12,10 +12,6 @@ Route::get('/dashboard', function () {
 });
 
 
-Route::get('/home', function () {
-    return view('home.home');
-});
-
 
 Route::get('/cekot', function () {
     return view('home.checkout');
