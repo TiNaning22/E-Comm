@@ -1,16 +1,24 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
-    return view('home.home');
+    return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dasboard.data-produk');
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+require __DIR__.'/auth.php';
 
 
 Route::get('/cekot', function () {
@@ -40,6 +48,14 @@ Route::get('/produk', function () {
     return view('home.produk-utama');
 });
 
+// Route untuk halaman tracking
+Route::view('/tracking', 'tracking.index');
+
+// Route untuk menangani form POST (tracking.track)
+Route::post('/tracking/track', function () {
+    // Hanya untuk simulasi pengiriman form
+    return 'Form berhasil dikirim! (Simulasi)';
+})->name('tracking.track');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -47,3 +63,4 @@ Route::get('/produk', function () {
 //     Route::patch('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
 //     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 // });
+
