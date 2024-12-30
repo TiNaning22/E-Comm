@@ -25,6 +25,13 @@ Route::get('/registrasi', function () {
     return view('auth.registrasi');
 });
 
+Route::get('/subs', function () {
+    return view('home.subs.subscription');
+});
+
+Route::get('/subs-form', function () {
+    return view('home.subs.form');
+});
 
 
 route::resource('/keranjang', CartController::class);
