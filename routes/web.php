@@ -33,6 +33,14 @@ Route::get('/produk', function () {
     return view('home.produk-utama');
 });
 
+// Route untuk halaman tracking
+Route::view('/tracking', 'tracking.index');
+
+// Route untuk menangani form POST (tracking.track)
+Route::post('/tracking/track', function () {
+    // Hanya untuk simulasi pengiriman form
+    return 'Form berhasil dikirim! (Simulasi)';
+})->name('tracking.track');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
