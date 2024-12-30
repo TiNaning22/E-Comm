@@ -72,6 +72,14 @@ html {
    text-align: center;
 }
 
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
 .btn{
     background-color: transparent;
     border: solid 2px rgb(50, 50, 50);
