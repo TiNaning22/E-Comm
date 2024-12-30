@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+
 
 Route::get('/', function () {
     return view('home.home');
@@ -17,22 +20,19 @@ Route::get('/cekot', function () {
     return view('home.checkout');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/registrasi', function () {
-    return view('auth.registrasi');
-});
-
-
-
 route::resource('/keranjang', CartController::class);
 
 Route::get('/produk', function () {
     return view('home.produk-utama');
 });
 
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
+// Route::logout('/login', [LoginController::class, 'logout']);
+
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
