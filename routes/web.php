@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -14,7 +15,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -33,6 +34,19 @@ require __DIR__.'/auth.php';
 Route::get('/cekot', function () {
     return view('home.checkout');
 });
+
+
+// Route untuk kategori
+
+    Route::resource('/kategori', KategoriController::class);
+
+    // Route::get('/tampilan-kategori', [CategoryController::class, 'index'])->name('categories.index');
+    // Route::get('/buat-kategori', [CategoryController::class, 'create'])->name('categories.create');
+    // // Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
+    // // Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+    // // Route::put('/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    // // Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
 
 // Route untuk menampilkan form login
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
