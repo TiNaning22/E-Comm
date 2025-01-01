@@ -8,6 +8,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 
 class AuthenticatedSessionController extends Controller
 {
@@ -22,26 +26,28 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function authenticate(Request $request)
     {
-        $request->authenticate();
+        $credentials = $request->validate([
+            'name' => 'required',
+            'password' => 'required|min:8'
+        ]);
 
-        $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/home'); 
+        }
+
+
+        return back()->withErrors(['name' => 'Nama pengguna atau kata sandi salah']);
+
+        
     }
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+     
 
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
+    
 }

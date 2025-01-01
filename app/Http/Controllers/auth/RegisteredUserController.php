@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        return view('auth.registrasi');
     }
 
     /**
@@ -27,24 +27,20 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // Validasi data
+        $validateData = $request->validate([
+            'name' => 'required','string','max:255',
+            'email' => ['required','string','email','max:255','unique:users'],
+            'password' => 'required','string','min:8','confirmed',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $validateData['password'] = Hash::make($validateData['password']);
 
-        event(new Registered($user));
+        User::create($validateData);
 
-        Auth::login($user);
+        return redirect('/login');
 
-        return redirect(route('dashboard', absolute: false));
     }
 }
