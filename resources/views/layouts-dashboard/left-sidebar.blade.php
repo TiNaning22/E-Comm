@@ -14,7 +14,7 @@
       <li>
         <a href="javascript:void(0);">
           <i class="material-icons col-amber">donut_large</i>
-          <span>Warning</span>
+          <span>Kategori</span>
         </a>
       </li>
       <li>
