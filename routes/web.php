@@ -3,9 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\VerificationController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.home');
 });
 
 Route::get('/dashboard', function () {
@@ -18,6 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::get('/email/verify', [EmailVerificationPromptController::class, '__invoke'])->middleware('auth')->name('verification.notice');
+// Route::post('/email/verification-notification', [VerificationController::class, 'sendVerificationEmail'])
+//     ->middleware('auth')
+//     ->name('verification.send');
 
 require __DIR__.'/auth.php';
 
@@ -26,9 +34,12 @@ Route::get('/cekot', function () {
     return view('home.checkout');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-});
+// Route untuk menampilkan form login
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
+// Route untuk memproses login
+Route::post('/login', [AuthenticatedSessionController::class, 'authenticate']);
+
 
 Route::get('/registrasi', function () {
     return view('auth.registrasi');
