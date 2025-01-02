@@ -2,13 +2,18 @@
 @section('content')
 <div class="container mt-5">
     <h1 class="text-center mb-4">Form Create Produk</h1>
-    <form action="/produk/store" method="POST">
+    <form action="/produk" method="POST" enctype="multipart/form-data">
         <!-- CSRF Token -->
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         
         <div class="mb-3">
-            <label for="namaProduk" class="form-label">Nama Produk</label>
+            <label for="NamaProduk" class="form-label">Nama Produk</label>
             <input type="text" class="form-control" id="NamaProduk" name="NamaProduk" placeholder="Masukkan nama produk" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Kategori" class="form-label">Kategori</label>
+            <input type="text" class="form-control" id="Kategori" name="Kategori" placeholder="Masukkan Kategori produk" required>
         </div>
         
         <div class="mb-3">
@@ -27,10 +32,10 @@
             <textarea class="form-control" id="DeskripsiProduk" name="DeskripsiProduk" rows="4" placeholder="Masukkan deskripsi produk" required></textarea>
         </div>
 
-        <div class="input-group">
-            <input type="file" class="form-control" id="Gambar" aria-describedby="Gambar" aria-label="Upload">
-            <button class="btn btn-outline-secondary" type="button" id="Gambar" name="Gambar">Button</button>
-          </div>
+        <div class="mb-3">
+            <label for="Gambar" class="form-label">Gambar Produk</label>
+            <input type="file" class="form-control" id="Gambar" name="Gambar" required>
+        </div>
         
         <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
