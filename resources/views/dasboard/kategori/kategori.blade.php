@@ -26,14 +26,13 @@
                             <td>{{ $category->Nama_Kategori }}</td>
                             <td>{{ $category->Deskripsi }}</td>
                             <td>
-                                <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->Nama_Kategori }}" width="50" height="50">
+                                <img src="{{ asset('storage/' . $category->Gambar) }}" alt="{{ $category->Nama_Kategori }}" width="50" height="50">
                             </td>
                             <td>
                                 <!-- Tombol Edit -->
-                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $category->Nama_Kategori }}">Edit</button>
-
+                                <a href={{ route('kategori.edit', $category->id) }} class="btn btn-warning btn-sm">Edit</a>
                                 <!-- Tombol Hapus -->
-                                <form action="{{ url('kategori.destroy', $category->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('kategori.destroy', $category->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus kategori ini?');">Hapus</button>
@@ -42,7 +41,7 @@
                         </tr>
 
                         <!-- Modal Edit -->
-                        <div class="modal fade" id="editModal{{ $category->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                        {{-- <div class="modal fade" id="editModal{{ $category->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -74,7 +73,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     @endforeach
                 </tbody>
             </table>

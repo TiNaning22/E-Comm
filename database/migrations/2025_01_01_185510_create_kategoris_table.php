@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Nama_Kategori');
             $table->string('Deskripsi');
-            $table->text('Gambar');
+            $table->text('Gambar')->nullable();
             $table->timestamps();
         });
     }

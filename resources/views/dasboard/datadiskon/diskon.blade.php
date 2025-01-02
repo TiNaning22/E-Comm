@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse($discounts as $discount)
+            @foreach($discounts as $discount)
             <tr>
                 <td>{{ $discount->id }}</td>
                 <td>{{ $discount->name }}</td>
@@ -26,15 +26,19 @@
                 <td>{{ $discount->end_date }}</td>
                 <td>
                     <!-- Tombol Edit -->
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editModal{{ $discount->id }}">Edit</button>
+                    <a href="{{ route('diskon.edit', $discount->id) }}" class="btn btn-warning btn-sm">Edit</a>
 
                     <!-- Tombol Hapus -->
-                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $discount->id }}">Hapus</button>
+                    <form action="{{ route('diskon.destroy', $discount->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus diskon ini?');"">Hapus</button>
+                    </form>
                 </td>
             </tr>
-
+            @endforeach
             <!-- Modal Edit -->
-            <div class="modal fade" id="editModal{{ $discount->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $discount->id }}" aria-hidden="true">
+            {{-- <div class="modal fade" id="editModal{{ $discount->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $discount->id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -69,36 +73,9 @@
                         </form>
                     </div>
                 </div>
-            </div>
-
-            <!-- Modal Delete -->
-            <div class="modal fade" id="deleteModal{{ $discount->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $discount->id }}" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel{{ $discount->id }}">Hapus Diskon</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Apakah Anda yakin ingin menghapus diskon "{{ $discount->name }}"?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <form action="{{ route('diskon.destroy', $discount->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @empty
-            <tr>
-                <td colspan="6" class="text-center">Tidak ada diskon.</td>
-            </tr>
-            @endforelse
+            </div> --}}
         </tbody>
     </table>
 </div>
+
 @endsection

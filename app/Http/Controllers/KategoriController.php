@@ -24,6 +24,8 @@ class KategoriController extends Controller
     // Menyimpan kategori baru
     public function store(Request $request)
     {
+
+    
         $request->validate([
             'Nama_Kategori' => 'required|string|max:255',
             'Deskripsi' => 'nullable|string',
@@ -45,9 +47,10 @@ class KategoriController extends Controller
     }
 
     // Menampilkan form edit kategori
-    public function edit(Kategori $Kategori)
+    public function edit(string $id)
     {
-      
+        $kategori = Kategori::findOrFail($id);
+        return view('dasboard.kategori.edit-kategori', compact('kategori'));
     }
 
     // Memperbarui kategori
@@ -67,6 +70,12 @@ class KategoriController extends Controller
             }
             $imagePath = $request->file('Gambar')->store('Kategori_Gambar', 'public');
         }
+        $Kategori->update([
+            'Nama_Kategori' => $request->Nama_Kategori,
+            'Deskripsi' => $request->Deskripsi,
+            'Gambar' => $imagePath,
+        ]);
+        return redirect('kategori')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     // Menghapus kategori
@@ -77,6 +86,6 @@ class KategoriController extends Controller
         }
         $Kategori->delete();
 
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus.');
+        return redirect('kategori')->with('success', 'Kategori berhasil dihapus.');
     }
 }

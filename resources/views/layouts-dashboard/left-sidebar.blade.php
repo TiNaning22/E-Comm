@@ -18,23 +18,17 @@
         </a>
       </li>
       <li>
-        <a href="javascript:void(0);">
+        <a href="/data-user">
           <i class="material-icons col-light-blue">donut_large</i>
-          <span>Information</span>
+          <span>Data User</span>
         </a>
       </li>
-      <li class="nav-item">
-        <a href="{{ route('dasboard.datauser.user') }}" class="nav-link">
-            <i class="nav-icon fas fa-users"></i>
-            <p>Data User</p>
+      <li>
+        <a href="/diskon">
+          <i class="material-icons col-light-blue">donut_large</i>
+          <span>Diskon</span>
         </a>
-    </li>
-    <li class="nav-item">
-      <a href="/diskon" class="nav-link">
-          <i class="nav-icon fas fa-tags"></i>
-          <p>Data Diskon</p>
-      </a>
-  </li>
+      </li>
     </ul>
   </div>
 </aside>
