@@ -38,7 +38,6 @@ Route::get('/cekot', function () {
     return view('home.checkout');
 });
 
-
 // Route untuk kategori
 
     Route::resource('/kategori', KategoriController::class);
@@ -62,8 +61,6 @@ Route::get('/registrasi', function () {
     return view('auth.registrasi');
 });
 
-
-
 route::resource('/keranjang', CartController::class);
 
 Route::get('/produk', function () {
@@ -75,7 +72,6 @@ Route::get('/data-user', function () {
 });
 
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
-
 
 // Route untuk data user
     Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');

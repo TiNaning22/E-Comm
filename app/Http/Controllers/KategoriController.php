@@ -11,8 +11,8 @@ class KategoriController extends Controller
     // Menampilkan daftar kategori
     public function index()
     {
-        $categories = Kategori::all();
-        return view('dasboard.kategori.kategori', compact('categories'));
+        $kategori = Kategori::all();
+        return view('dasboard.kategori.kategori', compact('kategori'));
     }
 
     // Menampilkan form tambah kategori
@@ -25,55 +25,48 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'Nama_Kategori' => 'required|string|max:255',
+            'Deskripsi' => 'nullable|string',
+            'Gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $imagePath = null;
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('Kategori_images', 'public');
+        if ($request->hasFile('Gambar')) {
+            $imagePath = $request->file('Gambar')->store('Kategori_Gambar', 'public');
         }
 
         Kategori::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $imagePath,
+            'Nama_Kategori' => $request->Nama_Kategori,
+            'Deskripsi' => $request->Deskripsi,
+            'Gambar' => $imagePath,
         ]);
 
-        return redirect()->route('categories.index')->with('success', 'Kategori berhasil ditambahkan.');
+        return redirect('kategori')->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     // Menampilkan form edit kategori
     public function edit(Kategori $Kategori)
     {
-        return view('categories.edit', compact('Kategori'));
+      
     }
 
     // Memperbarui kategori
     public function update(Request $request, Kategori $Kategori)
     {
+        //edit kategori
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'Nama_Kategori' => 'required|string|max:255',
+            'Deskripsi' => 'nullable|string',
+            'Gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('image')) {
+        $imagePath = $Kategori->image;
+        if ($request->hasFile('Gambar')) {
             if ($Kategori->image) {
                 Storage::disk('public')->delete($Kategori->image);
             }
-            $imagePath = $request->file('image')->store('Kategori_images', 'public');
-            $Kategori->image = $imagePath;
+            $imagePath = $request->file('Gambar')->store('Kategori_Gambar', 'public');
         }
-
-        $Kategori->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image' => $Kategori->image,
-        ]);
-
-        return redirect()->route('categories.index')->with('success', 'Kategori berhasil diperbarui.');
     }
 
     // Menghapus kategori
@@ -84,6 +77,6 @@ class KategoriController extends Controller
         }
         $Kategori->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Kategori berhasil dihapus.');
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus.');
     }
 }

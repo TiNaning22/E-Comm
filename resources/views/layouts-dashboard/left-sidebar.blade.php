@@ -12,7 +12,7 @@
         </a>
       </li>
       <li>
-        <a href="javascript:void(0);">
+        <a href="/kategori">
           <i class="material-icons col-amber">donut_large</i>
           <span>Kategori</span>
         </a>
