@@ -67,6 +67,19 @@ Route::get('/produk', function () {
     return view('home.produk-utama');
 });
 
+Route::get('/data-user', function () {
+    return view('home.data-user.data-user');
+});
+
+Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+
+// Route untuk data user
+    Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
+
+    Route::get('/diskon', [AdminDiscountController::class, 'index'])->name('dasboard.datadiskon.diskon');
+    Route::get('diskon/create', [AdminDiscountController::class, 'create'])->name('dasboard.datadiskon.create');
+    Route::post('/diskon', [AdminDiscountController::class, 'store'])->name('dasboard.datadiskon.diskon');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

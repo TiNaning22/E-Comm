@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+
 
 class ProfileController extends Controller
 {
@@ -16,7 +19,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        return view('profile.edit', [
+        return view('home.data-user.data-user', [
             'user' => $request->user(),
         ]);
     }
@@ -24,19 +27,41 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
-    {
-        $request->user()->fill($request->validated());
+    public function update(Request $request)
+{
+    $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+    // Validasi input
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Maksimal 2MB
+    ]);
+
+    // Update data profil
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    // Handle upload foto profil
+    if ($request->hasFile('profile_photo')) {
+        try {
+            // Hapus foto lama jika ada
+            if ($user->profile_photo && Storage::exists('public/' . $user->profile_photo)) {
+                Storage::delete('public/' . $user->profile_photo);
+            }
+
+            // Simpan foto baru
+            $path = $request->file('profile_photo')->store('profile_photos', 'public');
+            $user->profile_photo = $path;
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengupload gambar: ' . $e->getMessage());
         }
-
-        $request->user()->save();
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
+    $user->save();
+
+    return redirect()->route('profile.edit')->with('status', 'Profil berhasil diperbarui!');
+}
     /**
      * Delete the user's account.
      */

@@ -8,7 +8,7 @@
     </button>  
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">  
       <div class="navbar me-auto"> <!-- Mengganti ms-auto menjadi me-auto untuk memindahkan ke kiri -->
-        <a class="nav-link active" aria-current="page" href="/home">Home</a>  
+        <a class="nav-link active" aria-current="page" href="/">Home</a>  
         <a class="nav-link active" href="#tentang">Tentang Kami</a>  
         <a class="nav-link active" href="#katalog">Katalog</a>  
         <a class="nav-link active" href="#kontak">Kontak</a>  
