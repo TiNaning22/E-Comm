@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\PenjualanController;
 
 Route::get('/', function () {
     return view('home.home');
@@ -91,3 +92,10 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 //     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 // });
 
+
+Route::prefix('penjualan')->group(function () {
+    Route::get('detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
+    Route::get('detail-alamat', [PenjualanController::class, 'detailAlamat'])->name('penjualan.detailAlamat');
+    Route::get('/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
+});
+// Route::get('penjualan/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detailPengiriman');

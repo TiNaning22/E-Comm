@@ -17,24 +17,44 @@
           <span>Kategori</span>
         </a>
       </li>
-      <li>
-        <a href="javascript:void(0);">
+      <li class="nav-item dropdown">
+        <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#penjualanMenu" aria-expanded="false">
           <i class="material-icons col-light-blue">donut_large</i>
-          <span>Information</span>
+          <span>Penjualan</span>
         </a>
+        <ul id="penjualanMenu" class="collapse list-unstyled">
+          <li>
+            <a href="/penjualan/detail-transaksi">
+              <i class="material-icons">receipt</i>
+              <span>Detail Transaksi</span>
+            </a>
+          </li>
+          <li>
+            <a href="/penjualan/detail-alamat">
+              <i class="material-icons">location_on</i>
+              <span>Detail Alamat</span>
+            </a>
+          </li>
+          <li>
+            <a href="/penjualan/detail-pengiriman">
+              <i class="material-icons">local_shipping</i>
+              <span>Detail Pengiriman</span>
+            </a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item">
         <a href="{{ route('dasboard.datauser.user') }}" class="nav-link">
             <i class="nav-icon fas fa-users"></i>
             <p>Data User</p>
         </a>
-    </li>
-    <li class="nav-item">
-      <a href="/diskon" class="nav-link">
-          <i class="nav-icon fas fa-tags"></i>
-          <p>Data Diskon</p>
-      </a>
-  </li>
+      </li>
+      <li class="nav-item">
+        <a href="/diskon" class="nav-link">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>Data Diskon</p>
+        </a>
+      </li>
     </ul>
   </div>
 </aside>
