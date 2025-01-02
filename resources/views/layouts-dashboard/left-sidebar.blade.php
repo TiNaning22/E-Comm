@@ -17,12 +17,10 @@
           <span>Kategori</span>
         </a>
       </li>
-      <li>
-        <a href="/data-user">
       <li class="nav-item dropdown">
         <a href="javascript:void(0);" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#penjualanMenu" aria-expanded="false">
           <i class="material-icons col-light-blue">donut_large</i>
-          <span>Data User</span>
+          <span>Penjualan</span>
         </a>
         <ul id="penjualanMenu" class="collapse list-unstyled">
           <li>
@@ -45,10 +43,16 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a href="/diskon">
-          <i class="material-icons col-light-blue">donut_large</i>
-          <span>Diskon</span>
+      <li class="nav-item">
+        <a href="{{ route('dasboard.datauser.user') }}" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Data User</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="/diskon" class="nav-link">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>Data Diskon</p>
         </a>
       </li>
     </ul>
