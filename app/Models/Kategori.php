@@ -9,10 +9,6 @@ class Kategori extends Model
 {
     use HasFactory;
 
-    // Menentukan kolom yang dapat diisi secara massal
-    protected $fillable = [
-        'name',
-        'description',
-        'image'
-    ];
+    protected $guarded = ['id'];
+    
 }
