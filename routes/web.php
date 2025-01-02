@@ -15,8 +15,6 @@ Route::get('/', function () {
     return view('home.home');
 });
 
-
-
 Route::get('/dashboard', function () {
     return view('dasboard.dashboard');
     return view('dashboard');
@@ -81,7 +79,6 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 
 // Route untuk data user
     Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
-
 
     Route::get('/diskon', [AdminDiscountController::class, 'index'])->name('dasboard.datadiskon.diskon');
     Route::get('diskon/create', [AdminDiscountController::class, 'create'])->name('dasboard.datadiskon.create');
