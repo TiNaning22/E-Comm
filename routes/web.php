@@ -12,6 +12,8 @@ Route::get('/', function () {
     return view('home.home');
 });
 
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -52,6 +54,13 @@ route::resource('/keranjang', CartController::class);
 Route::get('/produk', function () {
     return view('home.produk-utama');
 });
+
+Route::get('/data-user', function () {
+    return view('home.data-user.data-user');
+});
+
+Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
+
 
 
 // Route::middleware(['auth'])->group(function () {
