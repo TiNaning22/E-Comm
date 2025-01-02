@@ -29,9 +29,30 @@ class AdminDiscountController extends Controller
 
         Discount::create($request->all());
 
-        return redirect()->route('dasboard.datadiskon.diskon')->with('success', 'Diskon berhasil ditambahkan.');
+        return redirect('diskon')->with('success', 'Diskon berhasil ditambahkan.');
     }
 
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'percentage' => 'required|integer|min:0|max:100',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
+    
+        $discount = Discount::findOrFail($id); // Ubah Diskon ke Discount
+        $discount->update($request->all());
+    
+        return redirect('diskon')->with('success', 'Diskon berhasil diperbarui.');
+    }
+    public function destroy($id)
+    {
+        $discount = Discount::findOrFail($id); // Ubah Diskon ke Discount
+        $discount->delete();
+    
+        return redirect('diskon')->with('success', 'Diskon berhasil dihapus.');
+    }
     
 }
 

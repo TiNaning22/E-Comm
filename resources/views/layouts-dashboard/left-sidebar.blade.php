@@ -12,7 +12,7 @@
         </a>
       </li>
       <li>
-        <a href="javascript:void(0);">
+        <a href="/kategori">
           <i class="material-icons col-amber">donut_large</i>
           <span>Kategori</span>
         </a>
@@ -30,7 +30,7 @@
         </a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('dasboard.datadiskon.diskon') }}" class="nav-link">
+      <a href="/diskon" class="nav-link">
           <i class="nav-icon fas fa-tags"></i>
           <p>Data Diskon</p>
       </a>
