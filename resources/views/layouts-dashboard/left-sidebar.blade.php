@@ -30,7 +30,7 @@
         </a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('dasboard.datadiskon.diskon') }}" class="nav-link">
+      <a href="/diskon" class="nav-link">
           <i class="nav-icon fas fa-tags"></i>
           <p>Data Diskon</p>
       </a>

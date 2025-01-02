@@ -8,15 +8,14 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Auth\Notifications\VerifyEmail;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminDiscountController;
+use App\Http\Controllers\AdminUserController;
 
 Route::get('/', function () {
     return view('home.home');
 });
 
 Route::get('/dashboard', function () {
-    return view('dasboard.dashboard');
     return view('dashboard');
 })->name('dashboard');
 
@@ -61,6 +60,7 @@ Route::get('/registrasi', function () {
     return view('auth.registrasi');
 });
 
+
 route::resource('/keranjang', CartController::class);
 
 Route::get('/produk', function () {
@@ -76,9 +76,11 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 // Route untuk data user
     Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
 
-    Route::get('/diskon', [AdminDiscountController::class, 'index'])->name('dasboard.datadiskon.diskon');
-    Route::get('diskon/create', [AdminDiscountController::class, 'create'])->name('dasboard.datadiskon.create');
-    Route::post('/diskon', [AdminDiscountController::class, 'store'])->name('dasboard.datadiskon.diskon');
+    Route::resource('diskon', AdminDiscountController::class);
+
+    // Route::get('/diskon', [AdminDiscountController::class, 'index'])->name('dasboard.datadiskon.diskon');
+    // Route::get('diskon/create', [AdminDiscountController::class, 'create'])->name('dasboard.datadiskon.create');
+    // Route::post('/diskon', [AdminDiscountController::class, 'store'])->name('dasboard.datadiskon.diskon');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

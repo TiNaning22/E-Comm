@@ -7,6 +7,10 @@
 <!-- Select Plugin Js -->
 <script src="{{ asset('assets/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 <!-- Slimscroll Plugin Js -->
 <script src="{{ asset('assets/plugins/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
 
