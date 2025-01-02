@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -33,15 +34,22 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-
 Route::get('/cekot', function () {
     return view('home.checkout');
 });
 
+Route::resource('/produk', ProdukController::class);
+
+// Route::get('/das-data-produk', function () {
+//     return view('dasboard.produk.data-produk');
+// });
+// Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+// Route::get('/produk.create', [ProdukController::class, 'create'])->name('produk.create');
+
 
 // Route untuk kategori
 
-    Route::resource('/kategori', KategoriController::class);
+Route::resource('/kategori', KategoriController::class);
 
     // Route::get('/tampilan-kategori', [CategoryController::class, 'index'])->name('categories.index');
     // Route::get('/buat-kategori', [CategoryController::class, 'create'])->name('categories.create');
@@ -66,9 +74,9 @@ Route::get('/registrasi', function () {
 
 route::resource('/keranjang', CartController::class);
 
-Route::get('/produk', function () {
-    return view('home.produk-utama');
-});
+// Route::get('/produk', function () {
+//     return view('home.produk-utama');
+// });
 
 Route::get('/data-user', function () {
     return view('home.data-user.data-user');
