@@ -12,14 +12,15 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('home.home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile-user', [ProfileController::class,'index']);
@@ -107,3 +108,6 @@ Route::prefix('penjualan')->group(function () {
     Route::get('/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
 });
 // Route::get('penjualan/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detailPengiriman');
+Route::prefix('dasboard')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
+});
