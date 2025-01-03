@@ -10,27 +10,27 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active bg-gradient-dark text-white" href="../pages/dashboard.html">
+          <a class="nav-link active bg-gradient-dark text-white" href="/pages/dashboard.html">
             <i class="material-symbols-rounded opacity-5">dashboard</i>
-            <span class="nav-link-text ms-1">Dashboard</span>
+            {{-- <span class="nav-link-text ms-1">Dashboard</span> --}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/tables.html">
             <i class="material-symbols-rounded opacity-5">Produk</i>
-            <span class="nav-link-text ms-1">Tables</span>
+            {{-- <span class="nav-link-text ms-1">Tables</span> --}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/billing.html">
             <i class="material-symbols-rounded opacity-5">Kategori</i>
-            <span class="nav-link-text ms-1">Billing</span>
+            {{-- <span class="nav-link-text ms-1">Billing</span> --}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark d-flex align-items-center" data-bs-toggle="collapse" href="#penjualanMenu" role="button" aria-expanded="false" aria-controls="penjualanMenu">
             <i class="material-symbols-rounded opacity-5">Penjualan</i>
-            <span class="nav-link-text ms-1">Penjualan</span>
+            {{-- <span class="nav-link-text ms-1">Penjualan</span> --}}
             <i class="bi bi-chevron-down ms-auto"></i> <!-- Ikon panah -->
           </a>
           <div class="collapse" id="penjualanMenu">
@@ -38,19 +38,19 @@
               <li>
                 <a class="nav-link text-dark" href="../pages/detail-transaksi.html">
                   <i class="material-symbols-rounded opacity-5">Detail Transaksi</i>
-                  <span class="ms-1">Detail Transaksi</span>
+                  {{-- <span class="ms-1">Detail Transaksi</span> --}}
                 </a>
               </li>
               <li>
                 <a class="nav-link text-dark" href="../pages/detail-alamat.html">
                   <i class="material-symbols-rounded opacity-5">Detail Alamat</i>
-                  <span class="ms-1">Detail Alamat</span>
+                  {{-- <span class="ms-1">Detail Alamat</span> --}}
                 </a>
               </li>
               <li>
                 <a class="nav-link text-dark" href="../pages/detail-pengiriman.html">
                   <i class="material-symbols-rounded opacity-5">Detail Pengiriman</i>
-                  <span class="ms-1">Detail Pengiriman</span>
+                  {{-- <span class="ms-1">Detail Pengiriman</span> --}}
                 </a>
               </li>
             </ul>
@@ -60,13 +60,13 @@
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/rtl.html">
             <i class="material-symbols-rounded opacity-5">DataUser</i>
-            <span class="nav-link-text ms-1">RTL</span>
+            {{-- <span class="nav-link-text ms-1">RTL</span> --}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/notifications.html">
             <i class="material-symbols-rounded opacity-5">DataDiskon</i>
-            <span class="nav-link-text ms-1">Notifications</span>
+            {{-- <span class="nav-link-text ms-1">Notifications</span> --}}
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -75,21 +75,14 @@
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/profile.html">
             <i class="material-symbols-rounded opacity-5">person</i>
-            <span class="nav-link-text ms-1">Profile</span>
+            {{-- <span class="nav-link-text ms-1">Profile</span> --}}
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark" href="../pages/sign-in.html">
             <i class="material-symbols-rounded opacity-5">login</i>
-            <span class="nav-link-text ms-1">Sign In</span>
+            {{-- <span class="nav-link-text ms-1">Sign In</span> --}}
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="../pages/sign-up.html">
-            <i class="material-symbols-rounded opacity-5">assignment</i>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
-        </li>
       </ul>
     </div>
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
