@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Produk;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,8 +13,9 @@ class ProdukController extends Controller
      */
     public function index()
     {
+        $kategori = Kategori::all();
         $produk = Produk::all();
-        return view('dasboard.produk.data-produk', compact('produk'));
+        return view('dasboard.produk.data-produk', compact('produk', 'kategori'));
     }
 
     /**
@@ -21,7 +23,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        return view('dasboard.produk.create-produk');
+        $kategori = Kategori::all();
+        return view('dasboard.produk.create-produk', compact('kategori'));
     }
 
     /**
