@@ -21,14 +21,14 @@
           <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
             <div class="col-md-5 offset-md-1">
               <div class="banner-content">
-                <h2>GoPro hero9 Black</h2>
-                <p>Limited stocks available. Grab it now!</p>
+                <h2>Briket Premium</h2>
+                <p>Unimited stocks available. Dapatkan sekarang!</p>
                 <a href="shop.html" class="btn mt-3">Shop Collection</a>
               </div>
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src="images/banner-image.png" class="img-fluid" alt="banner">
+                <img src={{asset('img/14703ad7-a93c-4bbe-8c4c-6ab56f6eb4b7.jpg')}} class="img-fluid" alt="banner">
               </div>
             </div>
           </div>
@@ -39,14 +39,14 @@
           <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
             <div class="col-md-5 offset-md-1">
               <div class="banner-content">
-                <h2>Iphone 15 Pro Max</h2>
-                <p>Discount available. Grab it now!</p>
+                <h2>NYALA DAN MAMBARA</h2>
+                <p>kualitas premium no1. Grab it now!</p>
                 <a href="shop.html" class="btn mt-3">Shop Product</a>
               </div>
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src="images/banner-image1.png" class="img-fluid" alt="banner">
+                <img src={{asset('img/Marshmallow fire.jpg')}} class="img-fluid" alt="banner">
               </div>
             </div>
           </div>
@@ -57,14 +57,14 @@
           <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
             <div class="col-md-5 offset-md-1">
               <div class="banner-content">
-                <h2>Macbook Collection</h2>
-                <p>Limited stocks available. Grab it now!</p>
+                <h2>BAHAN TERBAIK</h2>
+                <p>kualitas terbaik hanya ada di sini. Grab it now!</p>
                 <a href="shop.html" class="btn mt-3">Shop Collection</a>
               </div>
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src="images/banner-image2.png" class="img-fluid" alt="banner">
+                <img src={{asset('img/BEST COCONUT SHELL CHARCOAL BRIQUETTES FROM TOP COCO INDONESIA.jpg')}} class="img-fluid" alt="banner">
               </div>
             </div>
           </div>
