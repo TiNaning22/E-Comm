@@ -16,6 +16,7 @@
       <div class="navbar"> <!-- Keranjang tetap di sisi kanan -->
         <a class="nav-link active" href="/keranjang"><i class="bi bi-cart"></i></a>
         <a href="" class="btn btn-primary text-white m-auto">Subscription</a>
+
         @auth
         <div class="dropdown">
           <button class="btn btn-primary dropdown-toggle text-white" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,13 +24,14 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
             <li><a class="dropdown-item" href="/profile">Saya</a></li>
+            
             <li><a class="dropdown-item" href="/pesanan">Pesanan</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
           </ul>
         </div>
         @else
-        <a href="" class="btn btn-primary text-white m-auto">Masuk</a>
+        <a href="/login" class="btn btn-primary text-white m-auto">Masuk</a>
         @endauth
         
       </div>

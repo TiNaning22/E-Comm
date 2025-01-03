@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Checkout;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PenjualanController extends Controller
 {
+
+    public function detailAlamat()
+{
+    $checkout = Checkout::all();
+    // Log::info('Data Checkouts:', $checkout->toArray()); // Log data ke laravel.log
+    return view('penjualan.detail-alamat', compact('checkout'));
+}
     public function detailTransaksi()
 {
     $data = [
@@ -16,17 +25,7 @@ class PenjualanController extends Controller
 
     return view('penjualan.detail-transaksi', compact('data'));
 }
-public function detailAlamat()
-{
-    // Contoh data dummy, sesuaikan dengan data dari database
-    $data = [
-        'nama_penerima' => 'John Doe',
-        'alamat' => 'Jl. Mawar No. 10, Jakarta',
-        'telepon' => '08123456789',
-    ];
 
-    return view('penjualan.detail-alamat', compact('data'));
-}
 public function detailPengiriman()
 {
     $pengiriman = [
