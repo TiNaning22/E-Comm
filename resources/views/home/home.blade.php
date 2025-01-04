@@ -28,8 +28,8 @@
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src={{asset('img/14703ad7-a93c-4bbe-8c4c-6ab56f6eb4b7.jpg')}} class="img-fluid" alt="banner">
-              </div>
+                <img src="{{ asset('img/lyout 1.jpg') }}" class="img-fluid" alt="banner">
+            </div>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src={{asset('img/Marshmallow fire.jpg')}} class="img-fluid" alt="banner">
+                <img src="{{asset('img/lyout 3.jpg')}}" class="img-fluid" alt="banner">
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-md-6 text-center">
               <div class="image-holder">
-                <img src={{asset('img/BEST COCONUT SHELL CHARCOAL BRIQUETTES FROM TOP COCO INDONESIA.jpg')}} class="img-fluid" alt="banner">
+                <img src="{{asset('img/lyout 2.jpg')}}" class="img-fluid" alt="banner">
               </div>
             </div>
           </div>
@@ -96,84 +96,63 @@
         </div>
     </div>
 </div>
-{{-- ktegori awal --}}
-<section id="katalog">
-  <section id="categories">
-    <div class="container">
-      <div class="section-title overflow-hidden mb-4">
-        <h3 class="d-flex align-items-center">Categories</h3>
-      </div>
-      <div class="row">
-        <div class="col-md-2">
-          <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="shop.html">
-              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
-              <h5 class="mt-2"><a href="shop.html">Produk Utama Briket</a></h5>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="shop.html">
-              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
-              <h5 class="mt-2"><a href="shop.html">Alat dan Aksesoris</a></h5>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="shop.html">
-              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
-              <h5 class="mt-2"><a href="shop.html">Bahan Bakar</a></h5>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="shop.html">
-              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
-              <h5 class="mt-2"><a href="shop.html">Layanan</a></h5>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="shop.html">
-              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
-              <h5 class="mt-2"><a href="shop.html">Paket Spesial</a></h5>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</section>
 
-  {{-- kategori ahir --}}
+<section id="categories" class="my-5">
+  <div class="container">
+    <div class="section-title text-center mb-4">
+      <h3 class="d-flex justify-content-center align-items-center fw-bold">Categories</h3>
+
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-2">
+        <div class="card text-center py-4 mb-3 border rounded-3">
+          <a href="shop.html">
+                <img src="{{ asset('img/kataog briket.jpg') }}" class="img-fluid" alt="cart item">
+                <h5 class="mt-2"><a href="shop.html">Produk Utama Briket</a></h5>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card text-center py-4 mb-3 border rounded-3">
+              <a href="shop.html">
+                <img src="{{ asset('img/katalog alat.jpg') }}" class="img-fluid" alt="cart item">
+                <h5 class="mt-2"><a href="shop.html">Alat dan Aksesoris</a></h5>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card text-center py-4 mb-3 border rounded-3">
+              <a href="shop.html">
+                <img src="{{ asset('img/katalog bahan bakar.jpg') }}" class="img-fluid" alt="cart item">
+                <h5 class="mt-2"><a href="shop.html">Bahan Bakar</a></h5>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card text-center py-4 mb-3 border rounded-3">
+              <a href="shop.html">
+                <img src="{{ asset('img/katalog layanan.jpg') }}" class="img-fluid" alt="cart item">
+                <h5 class="mt-2"><a href="shop.html">Layanan</a></h5>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="card text-center py-4 mb-3 border rounded-3">
+              <a href="shop.html">
+                <img src="{{ asset('img/katalog paket spesial.jpg') }}" class="img-fluid" alt="cart item">
+                <h5 class="mt-2"><a href="shop.html">Paket Spesial</a></h5>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
 
   
   
 
-  <section id="kontak">
-    <div class="form-container">
-      <div class="col-md-5">
-      <form class="form">
-        <h2>Kontak</h2>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-     </div>
-    </div>
-    </div>
-  </section>
+  
   
 
 @endsection

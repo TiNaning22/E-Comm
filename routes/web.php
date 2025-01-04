@@ -16,6 +16,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('home.home');
@@ -41,6 +42,11 @@ Route::get('/cekot', function () {
 
 
 Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/payment', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('home.payment.success');
+Route::get('/order-history', [OrderController::class, 'index'])->name('order.history');
+
+Route::resource('/produk', ProdukController::class);
 
 // Route::get('/das-data-produk', function () {
 //     return view('dasboard.produk.data-produk');
@@ -90,12 +96,14 @@ Route::prefix('penjualan')->group(function () {
     Route::get('/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
 });
 // Route::get('penjualan/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detailPengiriman');
+Route::prefix('dasboard')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
+});
 
-Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
+// kontka awal
 
-// Rute Subscribe
-Route::get('/subscribe', [SubscribeController::class, 'showForm'])->name('subscribe.form');
-Route::get('/subs', [SubscribeController::class, 'showData'])->name('subscribe.data');
-Route::post('/subscribe', [SubscribeController::class, 'store'])->name('subscribe.store');
+Route::get('/kontak', function () {
+    return view('home.kontak.kontak');
+});
 
-// subcribe ahir
+// kontak ahir

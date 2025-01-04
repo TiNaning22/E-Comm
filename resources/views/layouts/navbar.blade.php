@@ -19,7 +19,7 @@
         <div class="offcanvas-body">
           <ul id="navbar" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
             <li class="nav-item">
-              <a class="nav-link me-4 active" href="index.html">Home</a>
+              <a class="nav-link me-4" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link me-4" href="about.html">About</a>
@@ -31,7 +31,7 @@
               <a class="nav-link me-4" href="blog.html">Blogs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link me-4" href="contact.html">Contact</a>
+              <a class="nav-link me-4" href="/kontak">Contact</a>
             </li>
           </ul>
           <div class="user-items d-flex">

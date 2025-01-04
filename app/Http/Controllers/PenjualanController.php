@@ -15,16 +15,13 @@ class PenjualanController extends Controller
     // Log::info('Data Checkouts:', $checkout->toArray()); // Log data ke laravel.log
     return view('penjualan.detail-alamat', compact('checkout'));
 }
-    public function detailTransaksi()
+public function detailTransaksi()
 {
-    $data = [
-        'id' => 1,
-        'tanggal' => '2025-01-03',
-        'total' => 1500000,
-    ];
-
-    return view('penjualan.detail-transaksi', compact('data'));
+    // Mengambil data transaksi
+    $checkout = Checkout::all();
+    return view('penjualan.detail-transaksi', compact('checkout'));
 }
+
 
 public function detailPengiriman()
 {
