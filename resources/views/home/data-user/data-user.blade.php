@@ -18,7 +18,7 @@
                     @if($user->profile_photo)
                         <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Foto Profil" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                     @else
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Foto Profil Default" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
+                        <img src="{{ asset('img/default-profile.png') }}" alt="Foto Profil Default" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
                     @endif
     
                     <h5 class="mt-3">{{ $user->name }}</h5>
