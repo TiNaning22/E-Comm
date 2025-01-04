@@ -15,10 +15,18 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PublicController;
+ 
 
-Route::get('/', function () {
-    return view('home.home');
-});
+
+Route::get('/', [PublicController::class,'home']);
+
+Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow']);
+Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
+Route::get('/bahan-bakar', [PublicController::class, 'bahanBakarShow']);
+Route::get('/paket-spesial', [PublicController::class, 'paketSpesialShow']);
+Route::get('/alat-aksesoris', [PublicController::class, 'alatAksesorisShow']);
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -56,8 +64,7 @@ Route::resource('/produk', ProdukController::class);
 // Route::get('/das-data-produk', function () {
 //     return view('dasboard.produk.data-produk');
 // });
-// Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-// Route::get('/produk.create', [ProdukController::class, 'create'])->name('produk.create');
+
 
 
 // Route untuk kategori

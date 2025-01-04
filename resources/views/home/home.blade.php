@@ -97,6 +97,9 @@
     </div>
 </div>
 
+@foreach ($kategori as $kategori)
+    
+@endforeach
 <section id="categories" class="my-5">
   <div class="container">
     <div class="section-title text-center mb-4">
@@ -148,9 +151,6 @@
       </div>
     </section>
   </section>
-
-  
-  
 
   <section id="kontak">
     <div class="form-container">
