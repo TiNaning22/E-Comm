@@ -117,3 +117,11 @@ Route::prefix('penjualan')->group(function () {
 Route::prefix('dasboard')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
 });
+
+// kontka awal
+
+Route::get('/kontak', function () {
+    return view('home.kontak.kontak');
+});
+
+// kontak ahir
