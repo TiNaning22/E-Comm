@@ -13,6 +13,7 @@ use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
 
 Route::get('/', function () {
     return view('home.home');
@@ -36,9 +37,16 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// Route::get('/cekot', function () {
+//     return view('home.checkout');
+// });
 Route::get('/cekot', function () {
     return view('home.checkout');
-});
+})->name('checkout.view');
+
+
+Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
+
 
 Route::resource('/produk', ProdukController::class);
 
