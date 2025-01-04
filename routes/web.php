@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return view('home.home');
@@ -46,7 +47,9 @@ Route::get('/cekot', function () {
 
 
 Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
-
+Route::get('/payment', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('home.payment.success');
+Route::get('/order-history', [OrderController::class, 'index'])->name('order.history');
 
 Route::resource('/produk', ProdukController::class);
 
@@ -87,14 +90,12 @@ route::resource('/keranjang', CartController::class);
 //     return view('home.produk-utama');
 // });
 
-Route::get('/data-user', function () {
-    return view('home.data-user.data-user');
-});
+
 
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route untuk data user
-    Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
+    Route::get('/data-user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
 
     Route::resource('diskon', AdminDiscountController::class);
 
