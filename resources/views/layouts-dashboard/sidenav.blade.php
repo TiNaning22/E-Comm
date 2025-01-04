@@ -22,6 +22,24 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link text-dark" href="/data-user">
+            <i class="material-symbols-rounded opacity-5">Data User</i>
+            {{-- <span class="nav-link-text ms-1">RTL</span> --}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/diskon">
+            <i class="material-symbols-rounded opacity-5">Data Diskon</i>
+            {{-- <span class="nav-link-text ms-1">Notifications</span> --}}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="/subs">
+            <i class="material-symbols-rounded opacity-5">Data Subscribe</i>
+            {{-- <span class="nav-link-text ms-1">Notifications</span> --}}
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link text-dark" href="/kategori ">
             <i class="material-symbols-rounded opacity-5">Kategori</i>
             {{-- <span class="nav-link-text ms-1">Billing</span> --}}
@@ -36,19 +54,19 @@
           <div class="collapse" id="penjualanMenu">
             <ul class="list-unstyled ps-4">
               <li>
-                <a class="nav-link text-dark" href="../pages/detail-transaksi.html">
+                <a class="nav-link text-dark" href="/detail-transaksi">
                   <i class="material-symbols-rounded opacity-5">Detail Transaksi</i>
                   {{-- <span class="ms-1">Detail Transaksi</span> --}}
                 </a>
               </li>
               <li>
-                <a class="nav-link text-dark" href="../pages/detail-alamat.html">
+                <a class="nav-link text-dark" href="/detail-alamat">
                   <i class="material-symbols-rounded opacity-5">Detail Alamat</i>
                   {{-- <span class="ms-1">Detail Alamat</span> --}}
                 </a>
               </li>
               <li>
-                <a class="nav-link text-dark" href="../pages/detail-pengiriman.html">
+                <a class="nav-link text-dark" href="/detail-pengiriman">
                   <i class="material-symbols-rounded opacity-5">Detail Pengiriman</i>
                   {{-- <span class="ms-1">Detail Pengiriman</span> --}}
                 </a>

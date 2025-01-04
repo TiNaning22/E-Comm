@@ -96,58 +96,60 @@
         </div>
     </div>
 </div>
-
-  <section id="katalog">
-    <section id="categories">
-      <div class="container">
-        <div class="section-title overflow-hidden mb-4">
-          <h3 class="d-flex align-items-center">Categories</h3>
+{{-- ktegori awal --}}
+<section id="katalog">
+  <section id="categories">
+    <div class="container">
+      <div class="section-title overflow-hidden mb-4">
+        <h3 class="d-flex align-items-center">Categories</h3>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="shop.html">
+              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
+              <h5 class="mt-2"><a href="shop.html">Produk Utama Briket</a></h5>
+            </a>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src={{ asset('img/display-dark-charcoal-different-forms-shapes.jpg') }} class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Produk Utama Briket</a></h5>
-              </a>
-            </div>
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="shop.html">
+              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
+              <h5 class="mt-2"><a href="shop.html">Alat dan Aksesoris</a></h5>
+            </a>
           </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src={{ asset('img/206d9493-0a87-43b1-8973-58b0e3f49452.jpg') }} class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Alat dan Aksesoris</a></h5>
-              </a>
-            </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="shop.html">
+              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
+              <h5 class="mt-2"><a href="shop.html">Bahan Bakar</a></h5>
+            </a>
           </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src={{ asset('https://s3-eu-west-1.amazonaws.com/images.linnlive.com/23982779ac9fbfb3d9848f9e6c4a3338/1f77a2a4-50e3-4d6d-bb60-3a06c250764d.jpg') }} class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Bahan Bakar</a></h5>
-              </a>
-            </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="shop.html">
+              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
+              <h5 class="mt-2"><a href="shop.html">Layanan</a></h5>
+            </a>
           </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src={{ asset('img/rb_2148899174.png') }} class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Layanan</a></h5>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src="images/cat-item5.png" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Paket Spesial</a></h5>
-              </a>
-            </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="shop.html">
+              <img src="images/default-image.jpg" class="img-fluid" alt="cart item">
+              <h5 class="mt-2"><a href="shop.html">Paket Spesial</a></h5>
+            </a>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </section>
+</section>
+
+  {{-- kategori ahir --}}
 
   
   
