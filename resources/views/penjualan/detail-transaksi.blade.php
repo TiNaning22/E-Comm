@@ -11,25 +11,25 @@
 
   <!-- Tabel Data Transaksi -->
   <h2 class="mt-4">Tabel Data Transaksi</h2>
-  @if(!empty($transactions) && count($transactions) > 0)
+  @if(!empty($checkout) && count($checkout) > 0)
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>#</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>Alamat</th>
+        <th>Metode Pembayaran</th>
         <th>Tanggal</th>
-        <th>Produk</th>
-        <th>Jumlah</th>
-        <th>Total</th>
       </tr>
     </thead>
     <tbody>
-      @foreach ($transactions as $index => $transaction)
+      @foreach ($checkout as $checkout)
       <tr>
-        <td>{{ $index + 1 }}</td>
-        <td>{{ $transaction['date'] }}</td>
-        <td>{{ $transaction['product'] }}</td>
-        <td>{{ $transaction['quantity'] }}</td>
-        <td>{{ $transaction['total'] }}</td>
+        <td>{{ $checkout->nama }}</td>
+        <td>{{ $checkout->email }}</td>
+        <td>{{ $checkout->alamat }}</td>
+        <td>{{ $checkout->payment_method }}</td>
+        <td>{{ $checkout->created_at->format('d M Y H:i') }}</td>
       </tr>
       @endforeach
     </tbody>
