@@ -38,7 +38,9 @@ class CheckoutController extends Controller
     // Method untuk menampilkan data alamat yang disimpan
     public function detailAlamat()
     {
-        $checkout = Checkout::all();
+        // Memilih hanya kolom nama dan alamat
+        $checkout = Checkout::select('nama', 'alamat')->get();
+    
         return view('penjualan.detailAlamat', compact('checkout'));
     }
 
@@ -46,5 +48,11 @@ class CheckoutController extends Controller
     public function paymentSuccess()
     {
         return view('home.payment-success');
+    }
+    // Method untuk menampilkan data alamat yang disimpan
+    public function detailTransaksi()
+    {
+        $transactions = Checkout::all();
+        return view('penjualan.detailTransaksi', compact('transactions'));
     }
 }
