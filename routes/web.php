@@ -90,14 +90,12 @@ route::resource('/keranjang', CartController::class);
 //     return view('home.produk-utama');
 // });
 
-Route::get('/data-user', function () {
-    return view('home.data-user.data-user');
-});
+
 
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route untuk data user
-    Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
+    Route::get('/data-user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
 
     Route::resource('diskon', AdminDiscountController::class);
 
