@@ -5,40 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Checkout;
 
-
 class CheckoutController extends Controller
 {
-
-
+    // Method untuk menyimpan alamat
     public function store(Request $request)
-{
-    \Log::info('Request Data:', $request->all());
+    {
+        // Validasi input data
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email',
+            'alamat' => 'required|string|max:500',
+            'payment_method' => 'required|string',
+        ]);
 
-    $validatedData = $request->validate([
-        'nama' => 'required|string|max:255',
-        'email' => 'required|email',
-        'alamat' => 'required|string|max:500',
-        'payment_method' => 'required|string',
-    ]);
+        // Simpan data ke database
+        Checkout::create($validatedData);
 
-    \Log::info('Data Validated:', $validatedData);
+        // Jika tombol yang diklik adalah "Simpan Alamat"
+        if ($request->action === 'save_address') {
+            return redirect()->back()->with('success', 'Alamat berhasil disimpan!');
+        }
 
-    Checkout::create($validatedData);
+        // Jika tombol yang diklik adalah "Bayar Sekarang"
+        if ($request->action === 'process_payment') {
+            return redirect()->route('home.payment.success')->with('success', 'Silakan lanjutkan ke pembayaran.');
+        }
 
-    \Log::info('Data Saved to Database');
-    return redirect()->back()->with('success', 'Alamat berhasil disimpan!');
-    if ($request->action === 'process_payment') {
-        // Logic untuk memproses pembayaran
-        return redirect()->route('pembayaran.view')->with('success', 'Silakan lanjutkan ke pembayaran.');
+        // Default redirect jika action tidak dikenali
+        return redirect()->back()->with('error', 'Terjadi kesalahan, mohon coba lagi.');
     }
-}
-public function detailAlamat()
-{
-    $checkout = Checkout::all();
-    Log::info('Data Checkouts:', $checkout->toArray()); // Log data ke laravel.log
-    return view('penjualan.detailAlamat', compact('checkout'));
-}
 
+    // Method untuk menampilkan data alamat yang disimpan
+    public function detailAlamat()
+    {
+        $checkout = Checkout::all();
+        return view('penjualan.detailAlamat', compact('checkout'));
+    }
 
-    
+    // Method untuk halaman Payment Success
+    public function paymentSuccess()
+    {
+        return view('home.payment-success');
+    }
 }
