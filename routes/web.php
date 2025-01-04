@@ -18,6 +18,8 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TrackingController;
+
  
 
 
@@ -121,3 +123,5 @@ Route::get('/kontak', function () {
 });
 
 // kontak ahir
+Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
+Route::post('/tracking', [TrackingController::class, 'track'])->name('tracking.track');
