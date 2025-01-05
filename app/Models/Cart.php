@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use App\Models\User;
+use App\Models\Produk;
 use App\Models\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,8 +17,8 @@ class Cart extends Model
         return $this->belongsTo(Produk::class);
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

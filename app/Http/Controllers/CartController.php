@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,43 @@ class CartController extends Controller
     public function create()
     {
         //
+    }
+
+    public function addToCart(Request $request, $id)
+    {
+            // Pastikan produk ada
+            $produk = Produk::find($id);
+    
+            if (!$produk) {
+                return redirect()->back()->with('error', 'Produk tidak ditemukan!');
+            }
+    
+            // Pastikan user login
+            $userId = auth()->id();
+    
+            if (!$userId) {
+                return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu!');
+            }
+    
+            // Cek apakah produk sudah ada di keranjang
+            $cart = Cart::where('user_id', $userId)
+                ->where('product_id', $id)
+                ->first();
+    
+            if ($cart) {
+                // Jika sudah ada, tambahkan jumlahnya
+                $cart->quantity += 1;
+                $cart->save();
+            } else {
+                // Jika belum ada, tambahkan ke keranjang
+                Cart::create([
+                    'user_id' => $userId,
+                    'product_id' => $id,
+                    'quantity' => 1,
+                ]);
+            }
+
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang!');
     }
 
     /**

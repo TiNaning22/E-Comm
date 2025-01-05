@@ -1,29 +1,30 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use Illuminate\Auth\Notifications\VerifyEmail;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PublicController;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use App\Http\Controllers\AdminDiscountController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
  
 
 
 Route::get('/', [PublicController::class,'home']);
 
-Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow']);
+Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow'])->name('produk');
 Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
 Route::get('/bahan-bakar', [PublicController::class, 'bahanBakarShow']);
 Route::get('/paket-spesial', [PublicController::class, 'paketSpesialShow']);
@@ -48,10 +49,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/cekot', function () {
-    return view('home.checkout');
-})->name('checkout.view');
-
+Route::get('/cekot/{id}', function ($id) {
+    $produk = Produk::find($id); // Ambil produk berdasarkan ID
+    return view('home.checkout', ['produk' => $produk]);
+});
 
 Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('/payment', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
@@ -76,7 +77,8 @@ Route::resource('diskon', AdminDiscountController::class);
 Route::resource('/produk', ProdukController::class);
 
 //keranjang
-route::resource('/keranjang', CartController::class);
+Route::get('/keranjang', [CartController::class, 'index']);
+Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 
 // Login
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -104,11 +106,10 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 // });
 
 //Penjualan
-Route::prefix('penjualan')->group(function () {
-    Route::get('detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
-    Route::get('detail-alamat', [PenjualanController::class, 'detailAlamat'])->name('penjualan.detailAlamat');
+    Route::get('/detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
+    Route::get('/detail-alamat', [PenjualanController::class, 'detailAlamat'])->name('penjualan.detailAlamat');
     Route::get('/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
-});
+
 // Route::get('penjualan/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detailPengiriman');
 Route::prefix('dasboard')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
