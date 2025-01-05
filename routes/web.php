@@ -13,10 +13,22 @@ use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\SubscribeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PublicController;
+ 
 
-Route::get('/', function () {
-    return view('home.home');
-});
+
+Route::get('/', [PublicController::class,'home']);
+
+Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow']);
+Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
+Route::get('/bahan-bakar', [PublicController::class, 'bahanBakarShow']);
+Route::get('/paket-spesial', [PublicController::class, 'paketSpesialShow']);
+Route::get('/alat-aksesoris', [PublicController::class, 'alatAksesorisShow']);
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -38,33 +50,36 @@ require __DIR__.'/auth.php';
 
 Route::get('/cekot', function () {
     return view('home.checkout');
-});
+})->name('checkout.view');
+
+
+Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/payment', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('home.payment.success');
+Route::get('/order-history', [OrderController::class, 'index'])->name('order.history');
 
 Route::resource('/produk', ProdukController::class);
 
 // Route::get('/das-data-produk', function () {
 //     return view('dasboard.produk.data-produk');
 // });
-// Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-// Route::get('/produk.create', [ProdukController::class, 'create'])->name('produk.create');
+
 
 
 // Route untuk kategori
-
 Route::resource('/kategori', KategoriController::class);
 
-    // Route::get('/tampilan-kategori', [CategoryController::class, 'index'])->name('categories.index');
-    // Route::get('/buat-kategori', [CategoryController::class, 'create'])->name('categories.create');
-    // // Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
-    // // Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-    // // Route::put('/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    // // Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+//diskon
+Route::resource('diskon', AdminDiscountController::class);
 
+//produk
+Route::resource('/produk', ProdukController::class);
 
-// Route untuk menampilkan form login
+//keranjang
+route::resource('/keranjang', CartController::class);
+
+// Login
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
-
-// Route untuk memproses login
 Route::post('/login', [AuthenticatedSessionController::class, 'authenticate']);
 
 
@@ -72,27 +87,14 @@ Route::get('/registrasi', function () {
     return view('auth.registrasi');
 });
 
-
-route::resource('/keranjang', CartController::class);
-
 // Route::get('/produk', function () {
 //     return view('home.produk-utama');
 // });
 
-Route::get('/data-user', function () {
-    return view('home.data-user.data-user');
-});
-
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route untuk data user
-    Route::get('/dasboard/user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
-
-    Route::resource('diskon', AdminDiscountController::class);
-
-    // Route::get('/diskon', [AdminDiscountController::class, 'index'])->name('dasboard.datadiskon.diskon');
-    // Route::get('diskon/create', [AdminDiscountController::class, 'create'])->name('dasboard.datadiskon.create');
-    // Route::post('/diskon', [AdminDiscountController::class, 'store'])->name('dasboard.datadiskon.diskon');
+    Route::get('/data-user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
 
 // Route::middleware(['auth'])->group(function () {
 //     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -101,7 +103,7 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 //     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
 // });
 
-
+//Penjualan
 Route::prefix('penjualan')->group(function () {
     Route::get('detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
     Route::get('detail-alamat', [PenjualanController::class, 'detailAlamat'])->name('penjualan.detailAlamat');
@@ -111,3 +113,11 @@ Route::prefix('penjualan')->group(function () {
 Route::prefix('dasboard')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');
 });
+
+// kontka awal
+
+Route::get('/kontak', function () {
+    return view('home.kontak.kontak');
+});
+
+// kontak ahir

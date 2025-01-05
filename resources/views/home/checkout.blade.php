@@ -46,44 +46,38 @@
         <!-- Formulir Pembayaran -->
         <div class="col-md-6">
             <h4 class="mb-3">Informasi Pengiriman</h4>
-            <form>
-            <!-- Nama Lengkap -->
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
-            </div>
-
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-            </div>
-
-            <!-- Alamat -->
-            <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" placeholder="1234 Jalan Utama" required>
-            </div>
-
-            <!-- Metode Pembayaran -->
-            <h4 class="mt-4 mb-3">Metode Pembayaran</h4>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="transferBank" name="paymentMethod" required>
-                <label class="form-check-label" for="transferBank">Transfer Bank</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="cod" name="paymentMethod" required>
-                <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
-            </div>
-
-            <!-- Total Harga -->
-            <hr class="my-4">
-            <h5>Total: <strong>Rp 170.000</strong></h5>
-
-            <!-- Tombol Checkout -->
-            <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Bayar Sekarang</button>
+            <form action="{{ route('checkout.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" name="alamat" class="form-control" id="alamat" placeholder="1234 Jalan Utama" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment_method">Paymentmetohd</label>
+                    <input type="text" name="payment_method" class="form-control" id="payment_method" placeholder="bank" required>
+                </div>
+                {{-- <div class="form-check">
+                    <input type="radio" class="form-check-input" id="transferBank" name="payment_method" value="Transfer Bank" required>
+                    <label class="form-check-label" for="transferBank">Transfer Bank</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="cod" name="payment_method" value="COD" required>
+                    <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
+                </div> --}}
+                <input type="hidden" name="action" value="save_address">
+                <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">Simpan Alamat</button>
+                <button type="submit" name="action" value="process_payment" class="btn btn-primary btn-lg btn-block mt-3">Bayar Sekarang</button>
             </form>
-
+            
+            
             <br>
             <br>
             <br>

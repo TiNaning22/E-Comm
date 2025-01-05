@@ -195,69 +195,39 @@ html {
 /* tentang kami end */
 
 /* katalog start */
-.card-group {
-    overflow-x: auto;
-    white-space: nowrap; /* Untuk memastikan elemen tidak melipat ke baris berikutnya */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.card-group::-webkit-scrollbar {
-    display: none;
-}
-
-
-.text-center-wrapper {
-    text-align: center; /* Memusatkan teks secara horizontal */
-    margin-top: 50px; /* Opsional: tambahkan jarak atas/bawah */
-    margin-bottom: 50px;
+.card {
+    background-color: #f9f9f9; /* Warna latar belakang kartu */
+    border: 1px solid #ddd; /* Border seragam */
+    transition: transform 0.2s ease-in-out; /* Efek hover */
   }
   
-  h1 {
-    margin: 0 auto; /* Tambahkan untuk memastikan teks benar-benar di tengah */
-    margin-bottom: 50px;
-  }
-
-.card-group .row {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 5px;
-    white-space: nowrap;
-    scroll-behavior: smooth; /* Agar scroll terasa halus */
-    -webkit-overflow-scrolling: touch; /* Dukungan untuk perangkat sentuh */
+  .card:hover {
+    transform: scale(1.05); /* Perbesar sedikit saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
   }
   
-  .card-group .col {
-    /*flex: 0 0 auto;  Membuat kolom tidak menyusut */
-    margin-right: 0px; /* Memberi jarak antar kartu */
+  .card img {
+    width: 100%; /* Pastikan gambar memenuhi kartu */
+    height: 150px; /* Tinggi seragam */
+    object-fit: cover; /* Potong gambar agar proporsional */
   }
   
-  .card {
-    width: 18rem; /* Tetapkan lebar card */
-    display: flex;
-    flex-direction: column; /* Membuat konten card tersusun secara vertikal */
-    overflow: hidden; /* Mencegah konten melampaui card */
-    text-align: left; /* Opsional: Sesuaikan jika Anda ingin teks rata kiri */
+  .card h5 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333; /* Warna teks */
+    margin-top: 10px;
   }
   
-  .card-body {
-    flex: 1; /* Memungkinkan isi body memenuhi card */
-    display: flex;
-    flex-direction: column; /* Susun konten card-body secara vertikal */
+  .card a {
+    text-decoration: none; /* Hilangkan garis bawah */
+    color: inherit; /* Warna teks sesuai elemen */
   }
   
-  .card-text {
-    white-space: normal; /* Pastikan teks dibungkus */
-    overflow: hidden; /* Mencegah teks keluar dari card */
-    text-overflow: ellipsis; /* Tambahkan jika Anda ingin teks panjang dipotong */
+  .card a:hover {
+    color: #007bff; /* Ubah warna saat hover */
   }
   
-  .card-img-top {
-    width: 100%; /* Sesuaikan dengan lebar elemen induk */
-    height: 200px; /* Tetapkan tinggi yang sama untuk semua gambar */
-    object-fit: cover; /* Memotong gambar agar sesuai dengan dimensinya */
-    }
 
 
   /* .btn-ktlg {
