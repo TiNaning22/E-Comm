@@ -29,6 +29,21 @@
         <div class="auth-header">
             <h3>Login</h3>
         </div>
+
+        <!-- Alert untuk error -->
+        @if(session('error'))
+            <div class="alert alert-danger text-center">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <!-- Alert untuk kredensial tidak valid -->
+        @if(session('invalid_credentials'))
+            <div class="alert alert-danger text-center">
+                {{ session('invalid_credentials') }}
+            </div>
+        @endif
+
         <form action="/login" method="POST">
             @csrf
             <div class="mb-3">

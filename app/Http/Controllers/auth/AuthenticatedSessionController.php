@@ -13,6 +13,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -23,29 +24,20 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
-    /**
-     * Handle an incoming authentication request.
-     */
+
     public function authenticate(Request $request)
-    {
-        $credentials = $request->validate([
-            'name' => 'required',
-            'password' => 'required|min:8'
-        ]);
+{
+    $credentials = $request->only('name', 'password');
 
-
-        if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/'); 
-        }
-
-
-        return back()->withErrors(['name' => 'Nama pengguna atau kata sandi salah']);
-
-        
+    if (Auth::attempt($credentials)) {
+        // Authentication passed...
+        return redirect()->intended('/');
     }
 
+    // Authentication failed...
+    return back()->withInput($request->only('name'))
+                 ->with('invalid_credentials', 'Username atau password salah. Silakan coba lagi.');
+}
 
      
 
