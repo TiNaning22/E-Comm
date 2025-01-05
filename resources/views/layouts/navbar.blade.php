@@ -84,8 +84,8 @@
                                         <span class="label-body"><a href="#" class="fw-bold">Forgot Password</a></span>
                                       </label>
                                       <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+                                    </form> 
                                     </div>
-                                  </form> 
                                   <form action="/register" method="POST">
                                     @csrf
                                     <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
