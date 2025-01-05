@@ -2,8 +2,8 @@
   <nav id="header-nav" class="navbar navbar-expand-lg py-3">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src={{ asset ('img/main-logo.png') }} class="logo">
-      </a>
+        <img src="{{ asset('img/LOGO FIXX.png') }}" class="logo" style="width: 150px; height: auto;">
+    </a>   
       <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-icon">
           <use xlink:href="#navbar-icon"></use>
