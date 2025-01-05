@@ -14,11 +14,10 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SubscribeController;
-use Illuminate\Auth\Notifications\VerifyEmail;
-use App\Http\Controllers\AdminDiscountController;
-use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\TrackingController;
+
  
 
 
@@ -122,3 +121,5 @@ Route::get('/kontak', function () {
 });
 
 // kontak ahir
+Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
+Route::post('/tracking', [TrackingController::class, 'track'])->name('tracking.track');
