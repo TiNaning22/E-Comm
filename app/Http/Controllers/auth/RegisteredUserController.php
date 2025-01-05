@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
 {
@@ -27,20 +28,41 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    // public function store(Request $request)
+    // {
+    //     // Validasi data
+    //     $validateData = $request->validate([
+    //         'name' => 'required','string','max:255',
+    //         'email' => ['required','string','email','max:255','unique:users'],
+    //         'password' => 'required','string','min:8','confirmed',
+    //     ]);
+
+    //     $validateData['password'] = Hash::make($validateData['password']);
+
+    //     User::create($validateData);
+
+    //     return redirect('/login');
+
+    // }
+
     public function store(Request $request)
     {
-        // Validasi data
-        $validateData = $request->validate([
-            'name' => 'required','string','max:255',
-            'email' => ['required','string','email','max:255','unique:users'],
-            'password' => 'required','string','min:8','confirmed',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $validateData['password'] = Hash::make($validateData['password']);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
 
-        User::create($validateData);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
-        return redirect('/login');
-
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
 }
