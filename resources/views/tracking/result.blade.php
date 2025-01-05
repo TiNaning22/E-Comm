@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Tracking</title>
+@extends('layouts.main')
+
+@section('content')
+
     <style>
         /* Body Background */
         body {
@@ -17,14 +15,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
-        /* Container */
+        /* Container for Results */
         .container-result {
             max-width: 600px;
             width: 90%;
             background: rgba(248, 248, 248, 0.9);
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -34,17 +33,17 @@
             font-size: 28px;
             font-weight: bold;
             margin-bottom: 20px;
-            color: #007bff;
+            color: #000000;
         }
 
         .result-details {
             margin: 20px 0;
             text-align: left;
+            font-size: 16px;
         }
 
         .result-details p {
             margin: 10px 0;
-            font-size: 16px;
             line-height: 1.5;
         }
 
@@ -52,27 +51,16 @@
             font-weight: bold;
         }
 
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+        /* Button Styles */
 
         a:hover {
             background-color: #0056b3;
         }
+
     </style>
-</head>
-<body>
+
     <div class="container-result">
-        <h1>Hasil Tracking</h1>
+        <h3>Hasil Tracking</h3>
 
         <div class="result-details">
             <p><span>Nomor Pesanan:</span> {{ $order['order_number'] }}</p>
@@ -83,5 +71,10 @@
 
         <a href="{{ route('tracking.index') }}">Kembali</a>
     </div>
-</body>
-</html>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+@endsection

@@ -13,6 +13,7 @@
                         <th>Nama Barang</th>
                         <th>Keterangan</th>
                         <th>Nomor Resi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,13 +23,19 @@
                             <td>{{ $order->item_name }}</td>
                             <td>{{ $order->description }}</td>
                             <td>{{ $order->tracking_number }}</td>
+                            <td>
+                                <form action="{{ route('tracking.track') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <input type="hidden" name="tracking_number" value="{{ $order->tracking_number }}">
+                                    <button type="submit" class="btn btn-info btn-sm">Lacak Pesanan</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         @endif
+
         <a href="/" class="btn btn-primary mt-3">Kembali ke Beranda</a>
     </div>
-</body>
-</html>
 @endsection

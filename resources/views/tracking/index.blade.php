@@ -1,7 +1,5 @@
 @extends('layouts.main')
-
 @section('content')
-
 <style>
     /* Body Background */
     body {
@@ -55,7 +53,7 @@
 
     button {
         width: 100%;
-        background-color: #007bff;
+        background-color: #000000;
         color: #fff;
         padding: 10px;
         border: none;
@@ -69,8 +67,9 @@
         background-color: #000000;
     }
 </style>
+
 <div class="container-resi">
-    <h1>Tracking Pesanan Anda</h1>
+    <h3>Tracking Pesanan Anda</h3>
 
     @if (session('error'))
         <p style="color: red;">{{ session('error') }}</p>
@@ -85,5 +84,7 @@
         <button type="submit">Lacak Pesanan</button>
     </form>
 </div>
-
+<br>
+<br>
+<br>
 @endsection
