@@ -15,7 +15,7 @@
             <img src="images/main-logo.png" class="logo">
           </a>
           <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-        </div>
+        </div>  
         <div class="offcanvas-body">
           <ul id="navbar" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
             <li class="nav-item">
