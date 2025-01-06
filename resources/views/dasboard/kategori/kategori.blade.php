@@ -6,7 +6,7 @@
             <h1 class="my-4">Kategori Produk</h1>
 
             <!-- Tombol Tambah Kategori -->
-            <a href="kategori/create" class="btn btn-primary mb-3">Tambah Kategori</a>
+            <a href="kategori/create" class="btn btn-dark mb-3">Tambah Kategori</a>
 
             <!-- Tabel Kategori -->
             <table class="table table-bordered table-striped">

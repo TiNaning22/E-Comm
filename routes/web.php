@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
@@ -14,8 +15,6 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TrackingController;
 
  

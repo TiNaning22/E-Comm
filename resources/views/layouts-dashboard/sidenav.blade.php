@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active bg-gradient-dark text-white" href="/dasboard">
-            <i class="material-symbols-rounded opacity-5">dashboard</i>
+          <a class="nav-link text-dark" href="/dasboard">
+            <i class="material-symbols-rounded opacity-5">Dashboard</i>
             {{-- <span class="nav-link-text ms-1">Dashboard</span> --}}
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="../produk">
+          <a class="nav-link text-dark" href="/produk">
             <i class="material-symbols-rounded opacity-5">Produk</i>
             {{-- <span class="nav-link-text ms-1">Tables</span> --}}
           </a>
@@ -73,19 +73,6 @@
               </li>
             </ul>
           </div>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/data-user">
-            <i class="material-symbols-rounded opacity-5">DataUser</i>
-            {{-- <span class="nav-link-text ms-1">RTL</span> --}}
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="/diskon">
-            <i class="material-symbols-rounded opacity-5">DataDiskon</i>
-            {{-- <span class="nav-link-text ms-1">Notifications</span> --}}
-          </a>
         </li>
       </ul>
     </div>

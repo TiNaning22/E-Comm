@@ -6,8 +6,8 @@
 
     <div class="card shadow mb-4" style="background-color: transparent; border: none;">
         <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #f8f9fa;">
-            <h6 class="m-0 font-weight-bold text-primary">Tabel Produk</h6>
-            <a href="{{ route('produk.create') }}" class="btn btn-primary btn-sm">
+            <h6 class="m-0 font-weight-bold">Tabel Produk</h6>
+            <a href="{{ route('produk.create') }}" class="btn btn-dark btn-sm">
                 <i class="fas fa-plus"></i> Tambah Produk
             </a>
         </div>

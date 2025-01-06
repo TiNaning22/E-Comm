@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Data Diskon</h1>
-    <a href="diskon/create" class="btn btn-primary mb-3">Tambah Diskon</a>
+    <a href="diskon/create" class="btn btn-dark mb-3">Tambah Diskon</a>
 
     <table class="table table-striped">
         <thead>
