@@ -2,8 +2,8 @@
   <nav id="header-nav" class="navbar navbar-expand-lg py-3">
     <div class="container">
       <a class="navbar-brand" href="index.html">
-        <img src="{{ asset ('img/main-LOGO-FIXX.png') }}" class="logo">
-      </a>
+        <img src="{{ asset('img/LOGO FIXX.png') }}" class="logo" style="width: 150px; height: auto;">
+    </a>   
       <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <svg class="navbar-icon">
           <use xlink:href="#navbar-icon"></use>
@@ -19,37 +19,60 @@
         <div class="offcanvas-body">
           <ul id="navbar" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
             <li class="nav-item">
-              <a class="nav-link me-4" href="index.html">Home</a>
+              <a class="nav-link me-4" href=/>Home</a>
             </li>
+            {{-- <li class="nav-item">
+              <a class="nav-link me-4" href=>About</a>
+            </li> --}}
             <li class="nav-item">
-              <a class="nav-link me-4" href="about.html">About</a>
+              <a class="nav-link me-4" href="/produk-utama">Shop</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link me-4" href="shop.html">Shop</a>
-            </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link me-4" href="blog.html">Blogs</a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a class="nav-link me-4" href="/kontak">Contact</a>
             </li>
           </ul>
           <div class="user-items d-flex">
             <ul class="d-flex justify-content-end list-unstyled mb-0">
-              <li class="search-item pe-3">
-                <a href="#" class="search-button">
-                  <svg class="search">
-                    <use xlink:href="#search"></use>
-                  </svg>
-                </a>
-              </li>
               <li class="pe-3">
+                @auth
+                <li class="cart-dropdown dropdown">
+                  <a href="cart.html" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                    <svg class="user">
+                      <use xlink:href="#user"></use>
+                    </svg><span class="fs-6 fw-light"></span>
+                  </a>
+                  <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                      
+                    </h4>
+                    <ul class="list-group mb-3">
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/profile">Profil Saya</a></li>
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/subscription">Subscription</a></li>
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/orders">Pesanan Saya</a></li>
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"> <hr>
+                            <form action="/logout" method="POST">
+                              @csrf
+                              <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                          </li>
+                    </ul>
+                  </div>
+                </li>
+              
+                @endauth
+
+                @guest
                 <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <svg class="user">
                     <use xlink:href="#user"></use>
                   </svg>
                 </a>
+                @endguest
                 <!-- Modal -->
+              
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog">
@@ -84,8 +107,8 @@
                                         <span class="label-body"><a href="#" class="fw-bold">Forgot Password</a></span>
                                       </label>
                                       <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+                                    </form> 
                                     </div>
-                                  </form> 
                                   <form action="/register" method="POST">
                                     @csrf
                                     <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
@@ -114,47 +137,39 @@
               <li class="wishlist-dropdown dropdown pe-3">
 
               </li>
-              <li class="cart-dropdown dropdown">
-                <a href="cart.html" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                  <svg class="cart">
-                    <use xlink:href="#cart"></use>
-                  </svg><span class="fs-6 fw-light">(02)</span>
-                </a>
-                <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
-                  <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary">Your cart</span>
-                    <span class="badge bg-primary rounded-pill">2</span>
-                  </h4>
-                  <ul class="list-group mb-3">
-                    <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                      <div>
-                        <h5>
-                          <a href="single-product.html">IPad (9th Gen)</a>
-                        </h5>
-                        <small>High quality in good price.</small>
+                  <li class="cart-dropdown dropdown">
+                    <a href="cart.html" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                      <svg class="cart">
+                        <use xlink:href="#cart"></use>
+                      </svg><span class="fs-6 fw-light">(02)</span>
+                    </a>
+                    <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
+                      <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary">Your cart</span>
+                        <span class="badge bg-primary rounded-pill">2</span>
+                      </h4>
+                      <ul class="list-group mb-3">
+                        <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
+                          <div>
+                            <h5>
+                              <a href="single-product.html">IPad (9th Gen)</a>
+                            </h5>
+                            <small>High quality in good price.</small>
+                          </div>
+                          <span class="text-primary">$870</span>
+                        </li>
+                        <li class="list-group-item bg-transparent d-flex justify-content-between">
+                          <span class="text-uppercase"><b>Total (USD)</b></span>
+                          <strong>$1470</strong>
+                        </li>
+                      </ul>
+                      <div class="d-flex flex-wrap justify-content-center">
+                        <a href="/keranjang" class="w-100 btn btn-dark mb-1" type="submit">View Cart</a>
+                        <a href="/cekot" class="w-100 btn btn-primary" type="submit">Go to checkout</a>
                       </div>
-                      <span class="text-primary">$870</span>
-                    </li>
-                    <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                      <div>
-                        <h5>
-                          <a href="single-product.html">Drone with camera</a>
-                        </h5>
-                        <small>Professional drone with camera.</small>
-                      </div>
-                      <span class="text-primary">$600</span>
-                    </li>
-                    <li class="list-group-item bg-transparent d-flex justify-content-between">
-                      <span class="text-uppercase"><b>Total (USD)</b></span>
-                      <strong>$1470</strong>
-                    </li>
-                  </ul>
-                  <div class="d-flex flex-wrap justify-content-center">
-                    <a href="/keranjang" class="w-100 btn btn-dark mb-1" type="submit">View Cart</a>
-                    <a href="/cekot" class="w-100 btn btn-primary" type="submit">Go to checkout</a>
-                  </div>
-                </div>
-              </li>
+                    </div>
+                  </li>
+              
             </ul>
           </div>
         </div>

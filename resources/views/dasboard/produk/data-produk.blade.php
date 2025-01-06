@@ -29,7 +29,9 @@
                         @foreach ($produk as $item)
                         <tr>
                             <td>{{ $item->NamaProduk }}</td>
-                            <td>{{ $item->Kategori }}</td>
+                          
+                            <td>{{ $item->Nama_Kategori }}</td>
+                                
                             <td>Rp {{ number_format($item->HargaProduk, 0, ',', '.') }}</td>
                             <td>{{ $item->StokProduk }}</td>
                             <td>{{ Str::limit($item->DeskripsiProduk, 50) }}</td>

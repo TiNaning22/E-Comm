@@ -97,9 +97,7 @@
     </div>
 </div>
 
-@foreach ($kategori as $kategori)
-    
-@endforeach
+
 <section id="categories" class="my-5">
   <div class="container">
     <div class="section-title text-center mb-4">
@@ -107,55 +105,21 @@
 
     </div>
     <div class="row justify-content-center">
-      <div class="col-md-2">
-        <div class="card text-center py-4 mb-3 border rounded-3">
-          <a href="shop.html">
-                <img src="{{ asset('img/kataog briket.jpg') }}" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Produk Utama Briket</a></h5>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src="{{ asset('img/katalog alat.jpg') }}" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Alat dan Aksesoris</a></h5>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src="{{ asset('img/katalog bahan bakar.jpg') }}" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Bahan Bakar</a></h5>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src="{{ asset('img/katalog layanan.jpg') }}" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Layanan</a></h5>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card text-center py-4 mb-3 border rounded-3">
-              <a href="shop.html">
-                <img src="{{ asset('img/katalog paket spesial.jpg') }}" class="img-fluid" alt="cart item">
-                <h5 class="mt-2"><a href="shop.html">Paket Spesial</a></h5>
-              </a>
-            </div>
-          </div>
+      @foreach ($kategori as $kategori)
+        <div class="col-md-2">
+          <div class="card text-center py-4 mb-3 border rounded-3">
+            <a href="{{ route('produk') }}">
+                  <img src="{{ asset('storage/' . $kategori->Gambar) }}" class="img-fluid" alt="cart item">
+                  <h5 class="mt-2"><a href="{{ route('produk') }}">{{ $kategori->Nama_Kategori }}</a></h5>
+                </a>
+              </div>
+        </div>
+      @endforeach
         </div>
       </div>
     </section>
   </section>
 
-  
-  
 
-  
-  
 
 @endsection

@@ -49,6 +49,6 @@ public function showTransactionDetails()
     ];
 
     // Kirim data ke view
-    return view('transactions.transaction-details', compact('salesData', 'months', 'transactions'));
+    return view('penjualan.detail-transaksi', compact('salesData', 'months', 'transactions'));
 }
 }

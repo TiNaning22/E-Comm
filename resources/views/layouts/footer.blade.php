@@ -112,16 +112,16 @@
         <div class="shipping d-flex">
           <p>We ship with:</p>
           <div class="card-wrap ps-2">
-            <img src="images/dhl.png" alt="visa">
-            <img src="images/shippingcard.png" alt="mastercard">
+            <img src="img/dhl.png" alt="visa">
+            <img src="img/shippingcard.png" alt="mastercard">
           </div>
         </div>
         <div class="payment-method d-flex">
           <p>Payment options:</p>
           <div class="card-wrap ps-2">
-            <img src="images/visa.jpg" alt="visa">
-            <img src="images/mastercard.jpg" alt="mastercard">
-            <img src="images/paypal.jpg" alt="paypal">
+            <img src="img/visa.jpg" alt="visa">
+            <img src="img/mastercard.jpg" alt="mastercard">
+            <img src="img/paypal.jpg" alt="paypal">
           </div>
         </div>            
       </div>

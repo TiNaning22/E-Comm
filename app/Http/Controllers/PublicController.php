@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Produk;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PublicController extends Controller
 {
     public function home()
     {
         $kategori = Kategori::all();
+        
         return view('home.home', compact('kategori'));
     }
 

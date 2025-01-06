@@ -2,14 +2,13 @@
 
 @section('content')
 
-<div class="row m-auto">
+<div class="container px-4 mt-5 mb-5">
+  <div class="row mt-5">
     <!-- Bagian Kiri - Informasi Toko -->
     <div class="col-md-6">
       <h2>Visit Our Store</h2>
       <p><strong>Address</strong><br>
         Jl. Sultan Agung No. 123, Kota Jakarta, Indonesia
-      </p>
-
       </p>
       <p><strong>Phone</strong><br>
         (623) 934-2400
@@ -51,5 +50,7 @@
     </div>
   </div>
 </div>
+
+
   @endsection
   

@@ -25,7 +25,7 @@
                     <div class="card shadow-sm" style="width: 15rem;">
                         <img src="/path/to/iphone14.jpg" class="card-img-top rounded" alt="Apple iPhone 14">
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-2">Apple iPhone 14</h5>
+                            <h5 class="card-title mb-2">Produk</h5>
                             <p class="card-text text-muted small">Sleek design, powerful performance, and advanced features.</p>
                         </div>
                     </div>
@@ -52,39 +52,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <div class="card shadow-sm" style="width: 15rem;">
-                        <img src="/path/to/iphone14.jpg" class="card-img-top rounded" alt="Apple iPhone 14">
-                        <div class="card-body text-center">
-                            <h5 class="card-title mb-2">Apple iPhone 14</h5>
-                            <p class="card-text text-muted small">Sleek design, powerful performance, and advanced features.</p>
-                        </div>
-                    </div>
-                </td>
-                <td class="align-middle text-center">
-                    <form action="/cart/1/update" method="POST">
-                        <input type="hidden" name="_token" value="csrf_token_here">
-                        <input type="hidden" name="_method" value="PATCH">
-                        <input type="number" name="quantity" value="2" min="1" class="form-control text-center mx-auto" style="width: 60px;">
-                    </form>
-                </td>
-                <td class="align-middle text-center">$999</td>
-                <td class="align-middle text-center">$1998</td>
-                <td class="align-middle text-center">
-                    <div class="d-flex flex-column align-items-center">
-                        <form action="/checkout" method="GET" class="mb-2">
-                            <button type="submit" class="btn btn-sm btn-success">Checkout</button>
-                        </form>
-                        <form action="/cart/1/destroy" method="POST">
-                            <input type="hidden" name="_token" value="csrf_token_here">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-            {{-- @foreach($carts as $cart)
+            @foreach($carts as $cart)
             <tr>
                 <td>{{ $cart->product->name }}</td>
                 <td class="align-middle text-center">
@@ -106,7 +74,7 @@
                         <button type="submit" class="btn btn-sm btn-danger">Remove</button>
                     </form>
                 </td>
-            </tr> --}}
+            </tr>
         </tbody>
     </table>
         <a href="/cekot" class="btn btn-success">Checkout Sekarang</a>

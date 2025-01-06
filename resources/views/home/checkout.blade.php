@@ -14,29 +14,13 @@
             <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-md-4">
-                <img src="https://via.placeholder.com/150" class="card-img" alt="Produk 1">
+                    <img src="{{ asset('storage/' . $produk->Gambar) }}" class="card-img" alt="{{ $produk->NamaProduk }}">
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Produk 1</h5>
-                    <p class="card-text">Deskripsi singkat tentang produk yang dibeli.</p>
-                    <p class="card-text"><strong>Rp 100.000</strong></p>
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- Produk Tambahan -->
-            <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                <img src="https://via.placeholder.com/150" class="card-img" alt="Produk 2">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Produk 2</h5>
-                    <p class="card-text">Deskripsi singkat tentang produk tambahan.</p>
-                    <p class="card-text"><strong>Rp 50.000</strong></p>
+                    <h5 class="card-title">{{ $produk->NamaProduk }}</h5>
+                    <p class="card-text">{{ $produk->DeskripsiProduk }}</p>
+                    <p class="card-text"><strong>Rp {{ number_format($produk->HargaProduk, 0, ',', '.') }}</strong></p>
                 </div>
                 </div>
             </div>
@@ -73,7 +57,7 @@
                     <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
                 </div> --}}
                 <input type="hidden" name="action" value="save_address">
-                <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">Simpan Alamat</button>
+                {{-- <button type="submit" class="btn btn-secondary btn-lg btn-block mt-3">Simpan Alamat</button> --}}
                 <button type="submit" name="action" value="process_payment" class="btn btn-primary btn-lg btn-block mt-3">Bayar Sekarang</button>
             </form>
             
