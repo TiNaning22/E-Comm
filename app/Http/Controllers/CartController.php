@@ -5,102 +5,48 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Produk;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-
 class CartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $carts = Cart::where('user_id', Auth::id())->with('product')->get();
-        return view('home.keranjang', compact('carts'));
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $productsInCart = $cart ? $cart->products : collect();
+        return view('public-area.keranjang', compact('productsInCart', 'cart'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function addToCart($id)
     {
-        //
-    }
-
-    public function addToCart(Request $request, $id)
-    {
-            // Pastikan produk ada
-            $produk = Produk::find($id);
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'You must be logged in to add items to the cart.');
+        }
     
-            if (!$produk) {
-                return redirect()->back()->with('error', 'Produk tidak ditemukan!');
-            }
+        $product = Produk::find($id);
     
-            // Pastikan user login
-            $userId = auth()->id();
+        if (!$product) {
+            return redirect()->back()->with('error', 'Produk tidak ditemukan!');
+        }
     
-            if (!$userId) {
-                return redirect()->route('login')->with('error', 'Silakan login terlebih dahulu!');
-            }
+        // Check if the cart exists for the current user
+        $cart = Cart::where('user_id', Auth::id())->first();
     
-            // Cek apakah produk sudah ada di keranjang
-            $cart = Cart::where('user_id', $userId)
-                ->where('product_id', $id)
-                ->first();
+        // If the cart doesn't exist, create a new one
+        if (!$cart) {
+            $cart = Cart::create(['user_id' => Auth::id()]);
+        }
     
-            if ($cart) {
-                // Jika sudah ada, tambahkan jumlahnya
-                $cart->quantity += 1;
-                $cart->save();
-            } else {
-                // Jika belum ada, tambahkan ke keranjang
-                Cart::create([
-                    'user_id' => $userId,
-                    'product_id' => $id,
-                    'quantity' => 1,
-                ]);
-            }
+        // Add product to the cart
+        $cart->products()->attach($product->id, ['quantity' => 2]);
 
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang!');
+        return redirect()->route('cart.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function updateCart(Request $request, $id)
     {
-        //
+        $cart = Cart::find($id);
+        $cart->products()->updateExistingPivot($request->product_id, ['quantity' => $request->quantity]);
+        return redirect()->route('cart.index')->with('success', 'Keranjang berhasil diupdate!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

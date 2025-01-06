@@ -1,15 +1,15 @@
 <?php
-
 namespace App\Models;
 
+use App\Models\Cart;
 use Illuminate\Database\Eloquent\Model;
 
 class Produk extends Model
 {
-    protected $fillable = ['NamaProduk', 'Kategori', 'HargaProduk', 'StokProduk', 'DeskripsiProduk', 'Gambar'];
+    protected $guarded = ['id'];
 
-    public function kategori()
+    public function cart()
     {
-        return $this->belongsTo('App\Models\Kategori');
+        return $this->belongsToMany(Cart::class, 'cart_product')->withPivot('quantity');
     }
 }

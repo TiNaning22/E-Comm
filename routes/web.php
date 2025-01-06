@@ -3,8 +3,9 @@
 use App\Models\Produk;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\FormController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminDiscountController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PublicController;
@@ -13,9 +14,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
-use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TrackingController;
 
  
@@ -53,8 +51,8 @@ Route::get('/cekot/{id}', function ($id) {
     return view('home.checkout', ['produk' => $produk]);
 });
 
-Route::post('/cekot', [CheckoutController::class, 'store'])->name('checkout.store');
-Route::get('/payment', [CheckoutController::class, 'paymentSuccess'])->name('payment.success');
+Route::post('/cekot', [CheckoutController::class, 'process'])->name('checkout.store');
+Route::get('/payment', [CheckoutController::class, 'success'])->name('payment.success');
 Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('home.payment.success');
 Route::get('/order-history', [OrderController::class, 'index'])->name('order.history');
 
@@ -76,7 +74,7 @@ Route::resource('diskon', AdminDiscountController::class);
 Route::resource('/produk', ProdukController::class);
 
 //keranjang
-Route::get('/keranjang', [CartController::class, 'index']);
+Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 
 // Login
@@ -123,3 +121,9 @@ Route::get('/kontak', function () {
 // kontak ahir
 Route::get('/tracking', [TrackingController::class, 'index'])->name('tracking.index');
 Route::post('/tracking', [TrackingController::class, 'track'])->name('tracking.track');
+
+// Route::get('/', [ProdukController::class, 'index'])->name('produk.index');
+// Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+// Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+// Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout.process');
+// Route::get('/checkout/success', [CheckoutController::class, 'paymentSuccess'])->name('checkout.success');

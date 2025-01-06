@@ -17,8 +17,13 @@
                   onclick="event.preventDefault(); document.getElementById('add-to-cart-{{ $produk->id }}').submit();" 
                   class="btn btn-primary">Checkout
                 </a>
-
             </form>
+            
+            <form action="{{route('cart.add', $produk->id)}}" method="POST">
+              @csrf
+              <button class="btn btn-primary">keranjang</button>
+            </form>
+            
             </div>
         </div>
       </div>

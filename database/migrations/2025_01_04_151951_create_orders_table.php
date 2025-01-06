@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id'); // Tambahkan kolom user_id
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Tambahkan relasi foreign key
-            $table->string('item_name');
-            $table->string('description');
-            $table->string('tracking_number');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->decimal('total_price', 10, 2);
+            $table->string('status')->default('pending');
+            $table->string('payment_method');
             $table->timestamps();
         });
+        
     }
 
     /**

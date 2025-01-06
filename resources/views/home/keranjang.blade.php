@@ -77,10 +77,5 @@
         <br>
         <br>
         <br>
-
-    {{-- @else
-        <p>Your cart is empty!</p>
-    @endif --}}
 </div>
-
 @endsection

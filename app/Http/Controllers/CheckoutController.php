@@ -2,57 +2,82 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Cart;
+use App\Models\User;
+use App\Models\Order;
 use App\Models\Checkout;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CheckoutController extends Controller
 {
-    // Method untuk menyimpan alamat
-    public function store(Request $request)
+
+    public function index()
     {
-        // Validasi input data
-        $validatedData = $request->validate([
-            'nama' => 'required|string|max:255',
+        $cart = Cart::where('user_id', Auth::id())->first();
+        $products = $cart ? $cart->products : collect();
+
+        return view('checkout.index', compact('products'));
+    }
+
+    public function process(Request $request)
+    {
+        $validateData = $request->validate([
+            'nama' => 'required',
             'email' => 'required|email',
-            'alamat' => 'required|string|max:500',
-            'payment_method' => 'required|string',
+            'alamat' => 'required',
+            'payment_method' => 'required',
         ]);
 
-        // Simpan data ke database
-        Checkout::create($validatedData);
+        Checkout::create($validateData);
 
-        // Jika tombol yang diklik adalah "Simpan Alamat"
-        if ($request->action === 'save_address') {
-            return redirect()->back()->with('success', 'Alamat berhasil disimpan!');
+        $cart = Cart::where('user_id', Auth::id())->first();
+
+        if (!$cart || $cart->products->isEmpty()) {
+            return redirect()->back()->with('error', 'Keranjang Anda kosong.');
         }
 
-        // Jika tombol yang diklik adalah "Bayar Sekarang"
-        if ($request->action === 'process_payment') {
-            return redirect()->route('home.payment.success')->with('success', 'Silakan lanjutkan ke pembayaran.');
+        DB::beginTransaction();
+
+        try {
+            $order = Order::create([
+                'user_id' => Auth::id(),
+                'nama' => $request->nama,
+                'email' => $request->email,
+                'alamat' => $request->alamat,
+                'payment_method' => $request->payment_method,
+                'total' => $cart->products->sum(function ($product) {
+                    return $product->harga * $product->pivot->quantity;
+                }),
+            ]);
+
+            foreach ($cart->products as $product) {
+                $order->products()->attach($product->id, [
+                    'quantity' => $product->pivot->quantity,
+                    'price' => $product->harga,
+                ]);
+            }
+
+            // Kosongkan keranjang
+            $cart->products()->detach();
+
+            DB::commit();
+
+            return redirect()->route('payment.success', $order->id);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memproses checkout.');
         }
-
-        // Default redirect jika action tidak dikenali
-        return redirect()->back()->with('error', 'Terjadi kesalahan, mohon coba lagi.');
     }
 
-    // Method untuk menampilkan data alamat yang disimpan
-    public function detailAlamat()
+    public function success($orderId)
     {
-        // Memilih hanya kolom nama dan alamat
-        $checkout = Checkout::select('nama', 'alamat')->get();
-    
-        return view('penjualan.detailAlamat', compact('checkout'));
+        $order = Order::findOrFail($orderId);
+        return view('home.payment-success', compact('order'));
     }
 
-    // Method untuk halaman Payment Success
-    public function paymentSuccess()
-    {
-        return view('home.payment-success');
-    }
-    // Method untuk menampilkan data alamat yang disimpan
-    public function detailTransaksi()
-    {
-        $transactions = Checkout::all();
-        return view('penjualan.detailTransaksi', compact('transactions'));
-    }
+
+
 }
