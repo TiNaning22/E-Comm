@@ -10,7 +10,7 @@
             </div>
         @endif
 
-        <form action="/subscribe" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('subs-create') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <!-- Nama Lengkap -->
             <div class="mb-3">
