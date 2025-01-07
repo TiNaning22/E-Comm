@@ -7,7 +7,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDiscountController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\OrderController;
-
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
