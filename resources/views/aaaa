@@ -1,63 +1,148 @@
-<div  class="card-group">
-    
-  <h1 class="text-center">Katalog</h1>
-  <div class="row justify-content-start">
-    <div class="col">
-      <div class="card">
-        <img src={{ asset('img/display-dark-charcoal-different-forms-shapes.jpg') }} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Produk Utama Briket</h5>
-          <p class="card-text">Jelajahi katalog Produk utama briket kami sekarang untuk solusi energi yang bersih dan praktis!</p>
-          <a href="/" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
-        </div>
-      </div>
-    </div>
-    <!-- Tambahkan elemen .col seperti contoh di atas untuk kartu lainnya -->
+<?php
 
-    <div class="col">
-      <div class="card">
-        <img src={{ asset('img/206d9493-0a87-43b1-8973-58b0e3f49452.jpg') }} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Alat dan Aksesoris</h5>
-          <p class="card-text">Jelajahi katalog produk alat dan aksesoris kami untuk melihat produk terbaru kami!</p>
-          <a href="/keranjang.html" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
-        </div>
-      </div>
-    </div>
+namespace App\Http\Controllers;
 
-    <!-- Tambahkan elemen .col seperti contoh di atas untuk kartu lainnya -->
-    <div class="col">
-      <div class="card">
-        <img src={{ asset('https://s3-eu-west-1.amazonaws.com/images.linnlive.com/23982779ac9fbfb3d9848f9e6c4a3338/1f77a2a4-50e3-4d6d-bb60-3a06c250764d.jpg') }} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Bahan Bakar</h5>
-          <p class="card-text">Jelajahi katalog Produk bahan bakar kami sekarang untuk solusi energi yang bersih dan praktis!</p>
-          <a href="/keranjang.html" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
-        </div>
-      </div>
-    </div>
-    <!-- Tambahkan elemen .col seperti contoh di atas untuk kartu lainnya -->
+use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Voucher;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
-  <div class="col">
-      <div class="card">
-        <img src={{ asset('img/rb_2148899174.png') }} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Layanan</h5>
-          <p class="card-text">Jelajahi katalog Layanan kami sekarang untuk melihat apa saja layanan yang saya berikan!</p>
-          <a href="/keranjang.html" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
-        </div>
-      </div>
-    </div>
-    <!-- Tambahkan elemen .col seperti contoh di atas untuk kartu lainnya -->
-    <div class="col">
-      <div class="card">
-        <img src={{ asset('https://files.oaiusercontent.com/file-LA81jmGSqsMEzWvcs8T9YW?se=2024-12-24T17%3A39%3A08Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D44f94359-5a35-4dad-ac1a-05b865177423.webp&sig=yxll1U4dfno8vWIPbj283CjclPcriNWamR3UOjMACW8%3D') }} class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Paket Spesial</h5>
-          <p class="card-text">Jelajahi katalog Paket spesial kami agar dapat membeli produk dengan harga yang lebih hemat!</p>
-          <a href="/keranjang.html" class="btn-ktlg btn-primary text-center">Lihat Produk</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+class CheckoutController extends Controller
+{
+    public function index()
+    {
+        $cartItems = Cart::where('user_id', Auth::id())
+            ->with('product')
+            ->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Keranjang belanja kosong');
+        }
+
+        $total = $cartItems->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
+
+        $shipping_fee = 10000; // Biaya pengiriman tetap Rp 10.000
+        $discount_amount = 0;
+
+        // Jika ada voucher aktif, hitung diskon
+        if (session()->has('active_voucher')) {
+            $voucher = session('active_voucher');
+            $discount_amount = ($total * $voucher->discount) / 100;
+        }
+
+        $final_total = $total - $discount_amount + $shipping_fee;
+
+        return view('public.checkout.index', compact('cartItems', 'total', 'shipping_fee', 'discount_amount', 'final_total'));
+    }
+
+    public function applyVoucher(Request $request)
+    {
+        $request->validate([
+            'voucher_code' => 'required|string'
+        ]);
+
+        // Ubah kode voucher menjadi uppercase untuk konsistensi
+        $voucher_code = strtoupper($request->voucher_code);
+
+        $voucher = Voucher::where('code', $voucher_code)
+            ->where('is_active', true)
+            ->where('expires_at', '>', now())
+            ->first();
+
+        if (!$voucher) {
+            return back()->with('voucher_error', 'Kode voucher tidak valid atau sudah kadaluarsa');
+        }
+
+        session(['active_voucher' => $voucher]);
+        return back()->with('voucher_success', 'Voucher berhasil digunakan');
+    }
+
+    public function removeVoucher()
+    {
+        session()->forget('active_voucher');
+        return back()->with('success', 'Voucher berhasil dihapus');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string',
+            'payment_method' => 'required|in:transfer,cod'
+        ]);
+
+        $cartItems = Cart::where('user_id', Auth::id())
+            ->with('product')
+            ->get();
+
+        if ($cartItems->isEmpty()) {
+            return redirect()->route('cart.index')->with('error', 'Keranjang belanja kosong');
+        }
+
+        try {
+            DB::beginTransaction();
+
+            $total = $cartItems->sum(function ($item) {
+                return $item->product->price * $item->quantity;
+            });
+
+            $shipping_fee = 10000;
+            $discount_amount = 0;
+            $voucher_id = null;
+
+            // Terapkan diskon jika ada voucher aktif
+            if (session()->has('active_voucher')) {
+                $voucher = session('active_voucher');
+                $discount_amount = ($total * $voucher->discount) / 100;
+                $voucher_id = $voucher->id;
+            }
+
+            $final_total = $total - $discount_amount + $shipping_fee;
+
+            $order = Order::create([
+                'user_id' => Auth::id(),
+                'order_number' => 'ORD-' . strtoupper(Str::random(10)),
+                'status' => 'pending',
+                'total_amount' => $final_total,
+                'shipping_fee' => $shipping_fee,
+                'shipping_address' => $request->address,
+                'shipping_name' => $request->name,
+                'shipping_phone' => $request->phone,
+                'payment_status' => 'unpaid',
+                'payment_method' => $request->payment_method,
+                'voucher_id' => $voucher_id,
+                'discount_amount' => $discount_amount
+            ]);
+
+            foreach ($cartItems as $item) {
+                $order->orderItems()->create([
+                    'product_id' => $item->product_id,
+                    'quantity' => $item->quantity,
+                    'price' => $item->product->price
+                ]);
+            }
+
+            // Hapus keranjang
+            Cart::where('user_id', Auth::id())->delete();
+
+            // Hapus voucher dari session
+            session()->forget('active_voucher');
+
+            DB::commit();
+
+            return redirect()->route('orders.show', $order)->with('success', 'Pesanan berhasil dibuat');
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error('Error creating order: ' . $e->getMessage());
+            return back()->with('error', 'Terjadi kesalahan saat membuat pesanan. Silakan coba lagi.');
+        }
+    }
+}

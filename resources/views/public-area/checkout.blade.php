@@ -25,70 +25,53 @@
                 </div>
             </div>
             </div>
-
-            <!-- Produk Tambahan -->
-            <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                <img src="https://via.placeholder.com/150" class="card-img" alt="Produk 2">
-                </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Produk 2</h5>
-                    <p class="card-text">Deskripsi singkat tentang produk tambahan.</p>
-                    <p class="card-text"><strong>Rp 50.000</strong></p>
-                </div>
-                </div>
-            </div>
-            </div>
         </div>
 
         <!-- Formulir Pembayaran -->
         <div class="col-md-6">
             <h4 class="mb-3">Informasi Pengiriman</h4>
-            <form>
-            <!-- Nama Lengkap -->
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
-            </div>
+            <form action="{{ route('checkout.store') }}" method="POST">
+                @csrf
+                <!-- Nama Lengkap -->
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
 
-            <!-- Email -->
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
-            </div>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                </div>
 
-            <!-- Alamat -->
-            <div class="form-group">
-                <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" placeholder="1234 Jalan Utama" required>
-            </div>
+                <!-- Alamat -->
+                <div class="form-group">
+                    <label for="alamat">Alamat</label>
+                    <input type="text" class="form-control" id="alamat" placeholder="1234 Jalan Utama" required>
+                </div>
+                
+                <!-- Kode Voucher -->
+                <div class="form-group">
+                    <label for="voucher_code">Kode Voucher (Opsional)</label>
+                    <input type="text" class="form-control" id="voucher_code" name="voucher_code" placeholder="Masukkan kode voucher">
+                    {{-- @if ($discount)
+                    <div class="alert alert-info mt-2">
+                        Potongan Harga: Rp {{ number_format($discountAmount, 0) }}
+                    </div>
+                    @endif --}}
+                </div>
 
-            <!-- Metode Pembayaran -->
-            <h4 class="mt-4 mb-3">Metode Pembayaran</h4>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="transferBank" name="paymentMethod" required>
-                <label class="form-check-label" for="transferBank">Transfer Bank</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" class="form-check-input" id="cod" name="paymentMethod" required>
-                <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
-            </div>
+                <!-- Metode Pembayaran -->
+                <h4 class="mt-4 mb-3">Metode Pembayaran</h4>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="transferBank" name="payment_method" required>
+                    <label class="form-check-label" for="transferBank">Transfer Bank</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" class="form-check-input" id="cod" name="payment_method" required>
+                    <label class="form-check-label" for="cod">Bayar di Tempat (COD)</label>
+                </div>
 
-            <!-- Total Harga -->
-            <hr class="my-4">
-            <h5>Total: <strong>Rp 170.000</strong></h5>
-
-            <!-- Tombol Checkout -->
-            <button class="btn btn-primary btn-lg btn-block mt-3" type="submit">Bayar Sekarang</button>
-            </form>
-
-            <br>
-            <br>
-            <br>
-        </div>
-        </div>
-    </div>
-</div>
-  @endsection
+                <!-- Total Harga -->
+               
+@endsection

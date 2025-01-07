@@ -19,10 +19,16 @@ use App\Http\Controllers\SubscribeController;
 // use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TrackingController;
 
- 
+ // web.php
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
 
 Route::get('/', [PublicController::class,'home']);
+
+Route::get('/produk/{category}', [PublicController::class, 'detailProduk'])->name('produk.by.category');
 
 Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow'])->name('produk');
 Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
@@ -49,15 +55,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/cekot/{id}', function ($id) {
+// Halaman Produk berdasarkan ID
+Route::get('/produk/{id}', function ($id) {
     $produk = Produk::find($id); // Ambil produk berdasarkan ID
     return view('home.checkout', ['produk' => $produk]);
 });
 
-Route::post('/cekot', [CheckoutController::class, 'process'])->name('checkout.store');
-Route::get('/payment', [CheckoutController::class, 'success'])->name('payment.success');
-Route::get('/payment-success', [CheckoutController::class, 'paymentSuccess'])->name('home.payment.success');
-Route::get('/order-history', [OrderController::class, 'index'])->name('order.history');
+// Halaman Checkout
+Route::get('/cekot', [CheckoutController::class, 'index'])->name('checkout.index'); // Halaman Checkout
+Route::post('/cekot', [CheckoutController::class, 'process'])->name('checkout.store'); // Proses checkout
+Route::get('/payment-success', [CheckoutController::class, 'success'])->name('home.payment.success'); // Halaman sukses pembayaran
+Route::get('/order-history', [OrderController::class, 'index'])->name('order.history'); // Riwayat pesanan
+
 
 Route::resource('/produk', ProdukController::class);
 

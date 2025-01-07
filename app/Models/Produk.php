@@ -12,4 +12,8 @@ class Produk extends Model
     {
         return $this->belongsToMany(Cart::class, 'cart_product')->withPivot('quantity');
     }
+    public function kategori()
+{
+    return $this->belongsTo(Kategori::class, 'Kategori', 'id');
+}
 }
