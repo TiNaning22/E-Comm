@@ -8,7 +8,7 @@ class Produk extends Model
 {
     protected $guarded = ['id'];
 
-    public function cart()
+    public function carts()
     {
         return $this->belongsToMany(Cart::class, 'cart_product')->withPivot('quantity');
     }

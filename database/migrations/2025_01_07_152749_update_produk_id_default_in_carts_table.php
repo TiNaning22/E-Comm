@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carts', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('produk_id')->constrained()->onDelete('cascade');
-            $table->integer('quantity')->default(1);
+        Schema::table('carts', function (Blueprint $table) {
+            $table->unsignedBigInteger('produk_id')->default(1)->change();
         });
-        
     }
 
     /**
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carts');
+        Schema::table('carts', function (Blueprint $table) {
+            $table->unsignedBigInteger('produk_id')->change();
+        });
     }
 };
