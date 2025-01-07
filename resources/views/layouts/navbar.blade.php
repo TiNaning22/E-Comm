@@ -50,8 +50,8 @@
                     </h4>
                     <ul class="list-group mb-3">
                           <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/profile">Profil Saya</a></li>
-                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/subscription">Subscription</a></li>
-                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/orders">Pesanan Saya</a></li>
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/subcription">Subscription</a></li>
+                          <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"><a class="dropdown-item" href="/order-history">Pesanan Saya</a></li>
                           <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm"> <hr>
                             <form action="/logout" method="POST">
                               @csrf

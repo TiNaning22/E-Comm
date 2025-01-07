@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDiscountController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ProfileController;
@@ -15,6 +15,8 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\SubscribeController;
+// use App\Http\Controllers\OrderController;
+// use App\Http\Controllers\PublicController;
 use App\Http\Controllers\TrackingController;
 
  
@@ -87,9 +89,13 @@ Route::get('/registrasi', function () {
     return view('auth.registrasi');
 });
 
-// Route::get('/produk', function () {
-//     return view('home.produk-utama');
-// });
+Route::get('/subcription', function () {
+    return view('home.subs.subscription');
+});
+
+Route::get('/formsubs', [SubscribeController::class, 'showForm'])->name('form-subs');
+Route::post('/form-subcription', [SubscribeController::class, 'store'])->name('subs-create');
+
 
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
 

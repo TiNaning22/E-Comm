@@ -40,6 +40,6 @@ class SubscribeController extends Controller
         ]);
 
         // Redirect dengan pesan sukses
-        return redirect()->route('subscribe.form')->with('success', 'Pendaftaran langganan berhasil!');
+        return redirect('/')->with('success', 'Pendaftaran langganan berhasil!');
     }
 }
