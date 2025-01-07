@@ -86,8 +86,8 @@ Route::resource('diskon', AdminDiscountController::class);
 Route::resource('/produk', ProdukController::class);
 
 //keranjang
-Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+// Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
+
 
 // Login
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -111,12 +111,13 @@ Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])
 // Route untuk data user
     Route::get('/data-user', [AdminUserController::class, 'index'])->name('dasboard.datauser.user');
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-//     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
-//     Route::patch('/cart/{cart}', [CartController::class, 'update'])->name('cart.update');
-//     Route::delete('/cart/{cart}', [CartController::class, 'destroy'])->name('cart.destroy');
-// });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::patch('/cart/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+Route::delete('/cart/destroy/{produkId}', [CartController::class, 'destroy'])->name('cart.destroy');
+
+});
 
 //Penjualan
     Route::get('/detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
