@@ -1,7 +1,7 @@
 @extends('layouts-dashboard.app')
 @section('content')
 <div class="container mt-4">
-    <h1>Data User</h1>
+    <h1>Data Subscribe</h1>
     <table class="table table-striped mt-3">
         <thead>
             <tr>

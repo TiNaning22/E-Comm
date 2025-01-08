@@ -108,9 +108,9 @@
       @foreach ($kategori as $kategori)
         <div class="col-md-2">
           <div class="card text-center py-4 mb-3 border rounded-3">
-            <a href="{{ route('produk') }}">
+            <a href="">
                   <img src="{{ asset('storage/' . $kategori->Gambar) }}" class="img-fluid" alt="cart item">
-                  <h5 class="mt-2"><a href="{{ route('produk') }}">{{ $kategori->Nama_Kategori }}</a></h5>
+                  <h5 class="mt-2"><a href="">{{ $kategori->Nama_Kategori }}</a></h5>
                 </a>
               </div>
         </div>

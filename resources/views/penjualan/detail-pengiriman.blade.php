@@ -1,14 +1,36 @@
 @extends('layouts-dashboard.app')
 
 @section('content')
-<div class="container">
-    <h1>Detail Pengiriman</h1>
-    <p>Kurir: {{ $pengiriman['kurir'] }}</p>
-<p>Nomor Resi: {{ $pengiriman['resi'] }}</p>
-<p>Status: {{ $pengiriman['status'] }}</p>
-<p>Estimasi: {{ $pengiriman['estimasi'] }}</p>
+<h3>Detail Pengiriman</h3>
 
-    <h2>Status Pengiriman</h2>
-    <p>{{ $pengiriman['status'] }}</p>
-</div>
+@if ($shippingDetail)
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Informasi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nomor Pesanan</strong></td>
+                <td>{{ $shippingDetail->order_number }}</td>
+            </tr>
+            <tr>
+                <td><strong>Nomor Tracking</strong></td>
+                <td>{{ $shippingDetail->tracking_number }}</td>
+            </tr>
+            <tr>
+                <td><strong>Status</strong></td>
+                <td>{{ $shippingDetail->status }}</td>
+            </tr>
+            <tr>
+                <td><strong>Alamat Pengiriman</strong></td>
+                <td>{{ $shippingDetail->shipping_address }}</td>
+            </tr>
+        </tbody>
+    </table>
+@else
+    <p>Data pengiriman tidak ditemukan.</p>
+@endif
 @endsection

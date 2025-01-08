@@ -25,7 +25,7 @@
               <a class="nav-link me-4" href=>About</a>
             </li> --}}
             <li class="nav-item">
-              <a class="nav-link me-4" href="/produk-utama">Shop</a>
+              <a class="nav-link me-4" href="/shop">Shop</a>
             </li>
             {{-- <li class="nav-item">
               <a class="nav-link me-4" href="blog.html">Blogs</a>

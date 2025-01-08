@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark" href="/subs">
+          <a class="nav-link text-dark" href="/das-sub">
             <i class="material-symbols-rounded opacity-5">Data Subscribe</i>
             {{-- <span class="nav-link-text ms-1">Notifications</span> --}}
           </a>

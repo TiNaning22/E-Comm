@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Produk;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
@@ -35,35 +34,34 @@ class ProdukController extends Controller
     {
         $request->validate([
             'NamaProduk' => 'required|string|max:255',
-            'Kategori' => 'required|exists:kategoris,id', // Validasi kategori harus ada di tabel Kategori
+            'Kategori' => 'required|string|max:255',
             'HargaProduk' => 'required|integer',
             'StokProduk' => 'required|integer',
             'DeskripsiProduk' => 'required|string',
             'Gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
         $gambarPath = $request->file('Gambar')->store('produk', 'public');
-    
+
         Produk::create([
             'NamaProduk' => $request->NamaProduk,
-            'Kategori' => $request->Kategori, // Menggunakan id kategori
+            'Kategori' => $request->Kategori,
             'HargaProduk' => $request->HargaProduk,
             'StokProduk' => $request->StokProduk,
             'DeskripsiProduk' => $request->DeskripsiProduk,
             'Gambar' => $gambarPath,
         ]);
-    
-        return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan.');
 
+        return redirect('produk')->with('success', 'Produk berhasil ditambahkan.');
     }
-    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        return view('produk.show', compact('produk'));
+        $produk = Produk::find($id);
+        return view('home.produk-utama.produk-utama', compact('produk'));
     }
 
     /**

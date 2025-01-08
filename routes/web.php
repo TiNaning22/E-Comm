@@ -28,13 +28,13 @@ Route::get('/', function () {
 
 Route::get('/', [PublicController::class,'home']);
 
-Route::get('/produk/{category}', [PublicController::class, 'detailProduk'])->name('produk.by.category');
+// Route::get('/produk/{category}', [PublicController::class, 'detailProduk'])->name('produk.by.category');
 
-Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow'])->name('produk');
-Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
-Route::get('/bahan-bakar', [PublicController::class, 'bahanBakarShow']);
-Route::get('/paket-spesial', [PublicController::class, 'paketSpesialShow']);
-Route::get('/alat-aksesoris', [PublicController::class, 'alatAksesorisShow']);
+// Route::get('/produk-utama', [PublicController::class, 'produkUtamaShow'])->name('produk');
+// Route::get('/layanan', [PublicController::class, 'produkLayananShow']);
+// Route::get('/bahan-bakar', [PublicController::class, 'bahanBakarShow']);
+// Route::get('/paket-spesial', [PublicController::class, 'paketSpesialShow']);
+// Route::get('/alat-aksesoris', [PublicController::class, 'alatAksesorisShow']);
 
 
 // Route::get('/dashboard', function () {
@@ -79,6 +79,9 @@ Route::resource('/produk', ProdukController::class);
 // Route untuk kategori
 Route::resource('/kategori', KategoriController::class);
 
+Route::get('/shop', [PublicController::class, 'produkShow'])->name('shop');
+Route::get('/product/kategori/{id}', [PublicController::class, 'kategori'])->name('product.kategori');
+
 //diskon
 Route::resource('diskon', AdminDiscountController::class);
 
@@ -106,6 +109,11 @@ Route::get('/formsubs', [SubscribeController::class, 'showForm'])->name('form-su
 Route::post('/form-subcription', [SubscribeController::class, 'store'])->name('subs-create');
 
 
+// Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/das-sub', [SubscribeController::class, 'showData'])->name('dashboard.users');
+// });
+
+
 Route::match(['put', 'patch'], '/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route untuk data user
@@ -123,7 +131,9 @@ Route::delete('/cart/destroy/{produkId}', [CartController::class, 'destroy'])->n
     Route::get('/detail-transaksi', [PenjualanController::class, 'detailTransaksi'])->name('penjualan.detailTransaksi');
     Route::get('/detail-alamat', [PenjualanController::class, 'detailAlamat'])->name('penjualan.detailAlamat');
     Route::get('/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
+// web.php
 
+Route::get('/detail-pengiriman', [TrackingController::class, 'detailPengiriman'])->name('penjualan.detail-pengiriman');
 // Route::get('penjualan/detail-pengiriman', [PenjualanController::class, 'detailPengiriman'])->name('penjualan.detailPengiriman');
 Route::prefix('dasboard')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dasboard.dashboard');

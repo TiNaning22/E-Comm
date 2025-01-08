@@ -18,29 +18,37 @@ class PublicController extends Controller
 
     public function detailProduk($namaKategori)
     {
-        // $kategori = Kategori::where('nama_kategori', $namaKategori)->first();
+        $kategori = Kategori::where('nama_kategori', $namaKategori)->first();
 
-        // if ($kategori) {
-        //     $produk = Produk::where('Kategori', $kategori->id)->get();
-        //     return view('home.produk-utama', compact('produk', 'kategori'));
-        // } else {
-        //     // Handle the case when the category is not found
-        //     return redirect('home.home')->back()->withError('Kategori not found');
-        // }
+        if ($kategori) {
+            $produk = Produk::where('Kategori', $kategori->id)->get();
+            return view('home.produk-utama', compact('produk', 'kategori'));
+        } else {
+            // Handle the case when the category is not found
+            return redirect('home.home')->back()->withError('Kategori not found');
+        }
+    }
+
+    public function kategori($id)
+    {
+        $produk = Produk::with('kategori')->get();
+        $kategori = Kategori::find($id);
+
+        return view('home.produk-layanan.produk-layanan', compact('produk', 'kategori'));
     }
     
-    // public function produkUtamaShow()
-    // {
-    //     $kategori = Kategori::where('nama_kategori', 'Produk Utama')->first();
-    //     $produk = Produk::where('Kategori', $kategori->id)->get();
+    public function produkShow()
+    {
+        $kategori = Kategori::all();
+        $produk = Produk::where('Kategori')->get();
     
-    //     return view('home.produk-utama.produk-utama', compact('produk', 'kategori'));
-    // }
+        return view('home.produk-layanan.produk-layanan', compact('produk', 'kategori'));
+    }
     
     // public function produkLayananShow()
     // {
     //     $kategori = Kategori::where('nama_kategori', 'Produk Layanan')->first();
-    //     $produk = Produk::where('Kategori', $kategori->id)->get();
+    //     $produk = Produk::where('Kategori')->get();
     
     //     return view('home.produk-layanan.produk-layanan', compact('produk', 'kategori'));
     // }

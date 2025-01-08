@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\Checkout;
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,42 +18,42 @@ class CheckoutController extends Controller
     public function index()
     {
         // // Ambil keranjang berdasarkan user
-        // $cart = Cart::where('user_id', Auth::id())->first();
+        $cart = Cart::where('user_id', Auth::id())->first();
 
-        // // Periksa apakah keranjang ada
-        // if (!$cart) {
-        //     // Jika tidak ada keranjang, beri pesan kesalahan
-        //     return redirect()->with('error', 'Keranjang Anda kosong.');
-        // }
+        // Periksa apakah keranjang ada
+        if (!$cart) {
+            // Jika tidak ada keranjang, beri pesan kesalahan
+            return redirect()->with('error', 'Keranjang Anda kosong.');
+        }
 
-        // // // Ambil produk dari keranjang
-        // $products = $cart->products;
+        // // Ambil produk dari keranjang
+        $products = $cart->products;
 
-        // // // Hitung total harga dari produk di keranjang
-        // $total = $cart->products->sum(function ($product) {
-        //     return $product->harga * $product->pivot->quantity;
-        // });
+        // // Hitung total harga dari produk di keranjang
+        $total = $cart->products->sum(function ($product) {
+            return $product->harga * $product->pivot->quantity;
+        });
 
-        // // Inisialisasi diskon dan potongan harga
-        // $discount = null;
-        // $discountAmount = 0;
+        // Inisialisasi diskon dan potongan harga
+        $discount = null;
+        $discountAmount = 0;
 
-        // // Cek apakah ada kode voucher di session
-        // if (session()->has('voucher_code')) {
-        //     $voucherCode = session('voucher_code');
-        //     $discount = Discount::where('code', $voucherCode)
-        //         ->where('start_date', '<=', now())
-        //         ->where('end_date', '>=', now())
-        //         ->first();
+        // Cek apakah ada kode voucher di session
+        if (session()->has('voucher_code')) {
+            $voucherCode = session('voucher_code');
+            $discount = Discount::where('code', $voucherCode)
+                ->where('start_date', '<=', now())
+                ->where('end_date', '>=', now())
+                ->first();
 
-        //     if ($discount) {
-        //         // Jika diskon ditemukan, hitung potongan harga
-        //         $discountAmount = ($total * $discount->percentage) / 100;
-        //     }
-        // }
+            if ($discount) {
+                // Jika diskon ditemukan, hitung potongan harga
+                $discountAmount = ($total * $discount->percentage) / 100;
+            }
+        }
 
-        // // Hitung total setelah diskon
-        // $totalAfterDiscount = $total - $discountAmount;
+        // Hitung total setelah diskon
+        $totalAfterDiscount = $total - $discountAmount;
 
         return view('public-area.checkout');
     }

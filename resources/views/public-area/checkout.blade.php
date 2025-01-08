@@ -13,20 +13,23 @@
             <h4 class="mb-3">Produk</h4>
             <div class="card mb-3">
             <div class="row no-gutters">
+                @foreach ($products as $produk)
+                    
+                
                 <div class="col-md-4">
-                <img src="https://via.placeholder.com/150" class="card-img" alt="Produk 1">
+                    <img src="{{ asset('storage/' . $produk->Gambar) }}" class="card-img" alt="{{ $produk->NamaProduk }}">
                 </div>
                 <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Produk 1</h5>
-                    <p class="card-text">Deskripsi singkat tentang produk yang dibeli.</p>
-                    <p class="card-text"><strong>Rp 100.000</strong></p>
+                    <h5 class="card-title">{{ $produk->NamaProduk }}</h5>
+                    <p class="card-text">{{ $produk->DeskripsiProduk }}</p>
+                    <p class="card-text"><strong>Rp {{ number_format($produk->HargaProduk, 0, ',', '.') }}</strong></p>
                 </div>
                 </div>
+                @endforeach
             </div>
             </div>
         </div>
-
         <!-- Formulir Pembayaran -->
         <div class="col-md-6">
             <h4 class="mb-3">Informasi Pengiriman</h4>
