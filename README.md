@@ -11,6 +11,18 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
+
+<h1>Langlah-langkah  untuk mengakses file projek </h1>
+
+1. dowlod zip atau salin link github 
+2. git clone (jika melalui github)
+3. buka folder projek di vs code  
+4. ⁠composer install 
+5. ⁠env masukin nama database "finalecom"
+6. ⁠php artisan migrate fresh - - seed 
+7. ⁠php artisan key: generate
+8. php artisan serve
+9. 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
 - Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
